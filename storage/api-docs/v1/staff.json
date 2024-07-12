@@ -1,0 +1,96 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Base Install Documentation",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://bnml-laravel-backend.test/api/v1"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Staff user details",
+                "description": "Returns user details including first name, middle name, last name, birth date, email, and mobile number.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": {
+                                        "first_name": "test1",
+                                        "middle_name": "test2",
+                                        "last_name": "test3",
+                                        "birth_date": "1990-01-01",
+                                        "email": "test@test.com",
+                                        "mobile": "09000000000"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "staff": {
+                "type": "http",
+                "description": "Authentication of staff",
+                "in": "header",
+                "scheme": "bearer"
+            },
+            "guest": {
+                "type": "http",
+                "description": "Authentication of guest",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "staff": ""
+        }
+    ]
+}
