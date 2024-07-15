@@ -4,15 +4,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// use App\Http\Controllers\Api\V1\Guest\Auth\AuthController;
-// use App\Http\Controllers\Api\V1\Guest\Signup\SignupController;
+use App\Http\Controllers\Api\V1\Guest\Signup\SignupController;
+use App\Http\Controllers\Api\V1\Guest\Users\UserController;
+use App\Http\Controllers\Api\V1\Guest\Auth\AuthController;
 // use App\Http\Controllers\Api\V1\Guest\Challenges\ChallengesController;
 // use App\Http\Controllers\Api\V1\Guest\Join\JoinController;
 // use App\Http\Controllers\Api\V1\Guest\Location\LocationController;
 // use App\Http\Controllers\Api\V1\Guest\Challenges\JoinedChallengesController;
 // use App\Http\Controllers\Api\V1\Guest\Points\PointsController;
 // use App\Http\Controllers\Api\V1\Guest\Activity\ActivityController;
-// use App\Http\Controllers\Api\V1\Guest\User\UserController;
 // use App\Http\Controllers\Api\V1\Guest\Bike\BikeController;
 
 
@@ -28,8 +28,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('guest')->group(function () {
 
-    // Route::post('login', [AuthController::class, 'login']);
-    // Route::post('signup', [SignupController::class, 'store']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('signup', [SignupController::class, 'store']);
     // Route::apiResource('challenges',ChallengesController::class);
 
    
@@ -50,11 +50,14 @@ Route::prefix('guest')->group(function () {
     
 
     // Route::group(['middleware' => ['auth:sanctum', 'otp_confirmed']], function () {
-    //     Route::post('logout', [AuthController::class, 'logout']);
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        //User
+        Route::apiResource('user', UserController::class);
+
+
+        Route::post('logout', [AuthController::class, 'logout']);
     //     Route::post('join', [JoinController::class, 'store']);
 
-    //     //User
-    //     Route::apiResource('user/challenges', JoinedChallengesController::class);
     //     Route::apiResource('user_details', UserController::class);
     //     Route::get('address', [UserController::class, 'getAddress']);
     //     //User Photo for Signup
@@ -82,7 +85,7 @@ Route::prefix('guest')->group(function () {
     //     //points
     //     Route::apiResource('points/{activity_id}/', PointsController::class);
 
-    // });
+    });
     
 });
 

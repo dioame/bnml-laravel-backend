@@ -6,7 +6,7 @@ $sections = [
     [
         'versions' => [1],
         'name' => 'staff',
-        'base' => '',
+        'base' => 'staff',
         'security' => [
             ['staff' => ''],
         ],

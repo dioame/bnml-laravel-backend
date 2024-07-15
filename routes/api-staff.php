@@ -3,10 +3,10 @@
 // use App\Http\Controllers\Api\V1\Staff\Product\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Api\V1\Staff\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Staff\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Staff\Users\UserController;
 // use App\Http\Controllers\Api\V1\Staff\Challenge\ChallengeController;
 // use App\Http\Controllers\Api\V1\Staff\Challenge\ChallengesPhotoController;
-// use App\Http\Controllers\Api\V1\Staff\User\UserController;
 // use App\Http\Controllers\Api\V1\Staff\Settings\SettingsController;
 
 /*
@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('staff')->group(function () {
 
-    // Route::post('login', [AuthController::class, 'login']);
-    // Route::group(['middleware' => ['auth:sanctum']], function () {
-    //     Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::post('logout', [AuthController::class, 'logout']);
 
     //     // Challenges
     //     // for some reason when i use api resource the staff/challenges/{id} is not register on route list staff/challenges/{challenge} instead
@@ -40,18 +40,18 @@ Route::prefix('staff')->group(function () {
     //     Route::delete('challenge/{id}/photo', [ChallengesPhotoController::class, 'destroy']);
     //     // Route::apiResource('challenges', ChallengeController::class);
 
-    //     // Users
+        // Users
+        Route::apiResource('user', UserController::class);
     //     Route::get('admin', [UserController::class, 'getAdmin']);
     //     Route::post('staff/users', [UserController::class, 'store']);
     //     Route::post('staff/users/{id}', [UserController::class, 'store']);
     //     Route::put('staff/users/{id}', [UserController::class, 'update']);
-    //     Route::apiResource('users', UserController::class);
     //     Route::patch('users/{id}/undeletion', [UserController::class, 'restore']);
 
     //     //Settings
     //     Route::post('staff/settings', [SettingsController::class, 'store']);
     //     Route::apiResource('settings', SettingsController::class);
         
-    // });
+    });
     
 });
