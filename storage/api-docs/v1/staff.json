@@ -10,7 +10,154 @@
         }
     ],
     "paths": {
-        "/user": {
+        "/staff/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login user",
+                "description": "Login user",
+                "requestBody": {
+                    "description": "User credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "title": "Email",
+                                        "description": "Email of user",
+                                        "type": "string",
+                                        "example": "staff1@test.com"
+                                    },
+                                    "password": {
+                                        "title": "Password",
+                                        "description": "Password of user",
+                                        "type": "string",
+                                        "example": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "token": "4|H1EYBeILvcTsqMTWSkJkXH2HxTSqqN18fOpjYZNWexzulLWYeSshAbqZb9ZsfE1Skjz53pO6AEVrJcLaypseolaOQqWEi3r0KgZm"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized",
+                                    "errors": [
+                                        {
+                                            "code": 3012,
+                                            "message": "Credentials incorrect"
+                                        },
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entry",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unprocessable entry",
+                                    "errors": [
+                                        {
+                                            "field": "email",
+                                            "code": 3001,
+                                            "message": "Email required"
+                                        },
+                                        {
+                                            "field": "email",
+                                            "code": 3002,
+                                            "message": "Email invalid"
+                                        },
+                                        {
+                                            "field": "password",
+                                            "code": 3003,
+                                            "message": "Password required"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/staff/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout user",
+                "description": "Logout authenticated user",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "example": "success"
+                                        },
+                                        "description": {
+                                            "example": "OK"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "staff": []
+                    }
+                ]
+            }
+        },
+        "/staff/user": {
             "get": {
                 "tags": [
                     "User"

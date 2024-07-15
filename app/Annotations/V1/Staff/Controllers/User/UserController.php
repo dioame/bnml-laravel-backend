@@ -8,7 +8,7 @@ class UserController extends Controller
 {
    /**
      * @OA\Get(
-     *      path="/user",
+     *      path="/staff/user",
      *      tags={"User"},
      *      summary="Staff user details",
      *      description="Returns user details including first name, middle name, last name, birth date, email, and mobile number.",

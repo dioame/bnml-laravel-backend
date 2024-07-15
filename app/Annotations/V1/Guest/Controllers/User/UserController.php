@@ -20,12 +20,16 @@ class UserController extends Controller
   "status": "success",
   "description": "OK",
   "data": {
-    "first_name": "test1",
-    "middle_name": "test2",
-    "last_name": "test3",
+    "id": 11,
+    "firstname": "test1",
+    "middlename": "test2",
+    "lastname": "test3",
+    "extensionname": "test3",
     "birth_date": "1990-01-01",
     "email": "test@test.com",
-    "mobile": "09000000000"
+    "mobile": "+639000000000",
+    "address": "test address",
+    "role": "labor"
   }
 }
      *          )
