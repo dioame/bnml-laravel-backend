@@ -28,8 +28,8 @@ use App\Http\Controllers\Api\V1\Guest\Auth\AuthController;
 */
 Route::prefix('guest')->group(function () {
 
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('signup', [SignupController::class, 'store']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/signup', [SignupController::class, 'store']);
     // Route::apiResource('challenges',ChallengesController::class);
 
    
