@@ -178,4 +178,76 @@ class UserController extends Controller
      *      ),
      * )
      */
+
+      /**
+     * @OA\Post(
+     *      path="/user/login/{email_address}/{pair_token}",
+     *      tags={"User"},
+     *      security={},
+     *      summary="Post Login email pair token",
+     *      description="Post Login email pair token",
+*     @OA\RequestBody(
+     *      required=true,
+     *      description="User credentials",
+     *      @OA\MediaType(
+     *          mediaType="multipart/form-data",
+     *          @OA\Schema(
+     *              type="object",
+     *              @OA\Property(
+     *              property="email",
+     *              description="Email",
+     *              title="Email",
+     *              type="string",
+     *              description="Email of user",
+     *              example="staff1@test.com"
+     *          ),
+     *          @OA\Property(
+     *              property="pair_token",
+     *              description="Pair Token",
+     *              title="Pair Token",
+     *              type="string",
+     *              description="Pair Token of user",
+     *          )
+     *          )
+     *      )
+     *     ),
+     *    @OA\Response(
+     *          response="200",
+     *          description="OK",
+     *          @OA\JsonContent(
+            example= {
+                "status":  "success",
+                "description": "OK",
+                "token": "4|H1EYBeILvcTsqMTWSkJkXH2HxTSqqN18fOpjYZNWexzulLWYeSshAbqZb9ZsfE1Skjz53pO6AEVrJcLaypseolaOQqWEi3r0KgZm"
+              }
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response="401",
+     *          description="Unauthorized",
+     *          @OA\JsonContent(
+    example= {
+    "status": "error",
+    "description": "Unauthorized"
+    },
+     *          )
+     *      ),
+     *     @OA\Response(
+     *          response="403",
+     *          description="Forbidden",
+     *          @OA\JsonContent(
+     *                  example= {
+    "status": "error",
+    "description": "Forbidden",
+    "errors": {
+    {
+    "code": 3004,
+    "message": "Staff inactive"
+    },
+    }
+    },
+     *          )
+     *      ),
+     * )
+     */
 }

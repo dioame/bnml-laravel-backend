@@ -22,7 +22,9 @@ use App\Http\Controllers\Api\V1\Staff\Users\UserController;
 Route::prefix('staff')->group(function () {
 
     Route::post('login', [AuthController::class, 'login']);
-    Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('user/login/{email_address}/{pair_token}', [UserController::class, 'loginByEmailPairToken']);
+
+    Route::group(['middleware' => ['auth:sanctum']], function () { 
         Route::post('logout', [AuthController::class, 'logout']);
 
     //     // Challenges

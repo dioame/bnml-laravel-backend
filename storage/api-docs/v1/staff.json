@@ -355,6 +355,85 @@
                     }
                 }
             }
+        },
+        "/user/login/{email_address}/{pair_token}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Post Login email pair token",
+                "description": "Post Login email pair token",
+                "requestBody": {
+                    "description": "User credentials",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "title": "Email",
+                                        "description": "Email of user",
+                                        "type": "string",
+                                        "example": "staff1@test.com"
+                                    },
+                                    "pair_token": {
+                                        "title": "Pair Token",
+                                        "description": "Pair Token of user",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "token": "4|H1EYBeILvcTsqMTWSkJkXH2HxTSqqN18fOpjYZNWexzulLWYeSshAbqZb9ZsfE1Skjz53pO6AEVrJcLaypseolaOQqWEi3r0KgZm"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
         }
     },
     "components": {

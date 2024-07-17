@@ -6,11 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Services\V1\Staff\Users\UserService;
 use App\Services\V1\Staff\Users\UserServiceBy;
 use App\Services\V1\Staff\Users\UserServiceByEmail;
+use App\Services\V1\Staff\Users\UserLoginEmailService;
 use App\Http\Resources\Staff\Users\UserCollection;
 use App\Http\Resources\Staff\Users\UserResource;
+
+
 
 
 class UserController extends Controller
@@ -39,6 +43,23 @@ class UserController extends Controller
             'description' => __('messages.200_ok'),
             'data' => $result ? new UserResource($result) : []
         ], 200);
+    }
 
+    public function loginByEmailPairToken(UserLoginEmailService $service,Request $request){
+        $laravel_token = config('app.google_nextjs_laravel_token');
+        if($laravel_token == $request->pair_token){
+            list($token, $user) = $service->execute($request->all());
+            return response()->json([
+                'status' => __('messages.success'),
+                'description' => __('messages.200_ok'),
+                'token' => $token,
+            ]);
+        }else{
+            return response()->json([
+                'status' => __('messages.error'),
+                'description' => __('messages.401_unauthorized'),
+            ],401);
+        }      
+      
     }
 }
