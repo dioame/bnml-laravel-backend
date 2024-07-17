@@ -5,9 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Staff\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Staff\Users\UserController;
-// use App\Http\Controllers\Api\V1\Staff\Challenge\ChallengeController;
-// use App\Http\Controllers\Api\V1\Staff\Challenge\ChallengesPhotoController;
-// use App\Http\Controllers\Api\V1\Staff\Settings\SettingsController;
+use App\Http\Controllers\Api\V1\Staff\Lib_activities\LibActivitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +24,10 @@ Route::prefix('staff')->group(function () {
 
     Route::group(['middleware' => ['auth:sanctum']], function () { 
         Route::post('logout', [AuthController::class, 'logout']);
+
+        //Library Activities
+        // Route::put('lib_activities/{id}', [LibActivitiesController::class, 'update']);
+        Route::apiResource('lib_activities', LibActivitiesController::class );
 
     //     // Challenges
     //     // for some reason when i use api resource the staff/challenges/{id} is not register on route list staff/challenges/{challenge} instead

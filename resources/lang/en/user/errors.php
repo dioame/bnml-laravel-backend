@@ -7,4 +7,7 @@ return [
     '3004' => 'email taken',
     '3005' => 'Credentials incorrect',
 
+    '3006' => 'Name incorrect',
+    '3007' => 'Description incorrect',
+
 ];
