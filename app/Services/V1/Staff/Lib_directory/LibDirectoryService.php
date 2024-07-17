@@ -36,9 +36,9 @@ class LibDirectoryService
     }
 
     public function executePut($id, $params){
-        $lib_activities = Lib_directory::findOrFail($id);
-        $lib_activities->update($params);
-        $lib_activities->save();
+        $Lib_directory = Lib_directory::findOrFail($id);
+        $Lib_directory->update($params);
+        $Lib_directory->save();
         
     }
 }

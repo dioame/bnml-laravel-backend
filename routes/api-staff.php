@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\Staff\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Staff\Users\UserController;
 use App\Http\Controllers\Api\V1\Staff\Lib_activities\LibActivitiesController;
 use App\Http\Controllers\Api\V1\Staff\Lib_directory\LibDirectoryController;
+use App\Http\Controllers\Api\V1\Staff\Directory\DirectoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::prefix('staff')->group(function () {
 
         //Library Directory
         Route::apiResource('lib_directory', LibDirectoryController::class );
+
+        //Directory
+        Route::post('directory/{id}/update', [DirectoryController::class, 'update']);
+        Route::apiResource('directory', DirectoryController::class );
 
     //     // Challenges
     //     // for some reason when i use api resource the staff/challenges/{id} is not register on route list staff/challenges/{challenge} instead

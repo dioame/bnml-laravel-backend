@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Annotations\V1\Staff\Controllers\Lib_activities;
+namespace App\Annotations\V1\Staff\Controllers\Directory;
 
 use App\Annotations\V1\Guest\Controllers\Controller;
 
-class GetLibActivities extends Controller
+class GetDirectory extends Controller
 {
    /**
      * @OA\Get(
-     *      path="/lib_activities",
-     *      tags={"Lib Activities"},
-     *      summary="library activities",
-     *      description="library activities",
+     *      path="/directory",
+     *      tags={"Directory"},
+     *      summary="Directory",
+     *      description=" Directory",
      *    @OA\Response(
      *          response="200",
      *          description="OK",
@@ -21,10 +21,19 @@ class GetLibActivities extends Controller
   "description": "OK",
   "data": {
     {
-      "id": 1,
-      "name": "lib activities",
-      "description": "lib description",
-      "created_by": 1
+      "id": 5,
+      "file_id": null,
+      "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+    },
+    {
+      "id": 6,
+      "file_id": null,
+      "path": "http://bnml-laravel-backend.test/storage/photo/3KraolRfMEMDM3np3ITupVX0zMab9B0wopX6GAh0.png"
+    },
+    {
+      "id": 7,
+      "file_id": null,
+      "path": "http://bnml-laravel-backend.test/storage/photo/ixvEDgxeKqViC3xNXNoSVCGm4IkKQrGbvXCwIyKx.png"
     }
 }
 }
