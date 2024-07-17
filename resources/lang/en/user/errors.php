@@ -10,4 +10,7 @@ return [
     '3006' => 'Name incorrect',
     '3007' => 'Description incorrect',
 
+    '3008' => 'File id incorrect',
+    '3009' => 'Path incorrect',
+
 ];
