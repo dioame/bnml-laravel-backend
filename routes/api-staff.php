@@ -41,7 +41,9 @@ Route::prefix('staff')->group(function () {
     //     // Route::apiResource('challenges', ChallengeController::class);
 
         // Users
+        Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::apiResource('user', UserController::class);
+     
     //     Route::get('admin', [UserController::class, 'getAdmin']);
     //     Route::post('staff/users', [UserController::class, 'store']);
     //     Route::post('staff/users/{id}', [UserController::class, 'store']);
