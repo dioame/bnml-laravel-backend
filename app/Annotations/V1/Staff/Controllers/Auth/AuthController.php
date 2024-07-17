@@ -9,7 +9,7 @@ class AuthController extends Controller
      *
      * @OA\Post(
      *     security={},
-     *     path="/staff/login",
+     *     path="/login",
      *     tags={"Authentication"},
      *     description="Login user",
      *     @OA\RequestBody(
@@ -93,7 +93,7 @@ class AuthController extends Controller
      * Logout user
      *
      * @OA\Post(
-     *     path="/staff/logout",
+     *     path="/logout",
      *     security={ {"staff": {} }},
      *     tags={"Authentication"},
      *     description="Logout authenticated user",

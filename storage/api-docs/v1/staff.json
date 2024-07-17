@@ -6,11 +6,11 @@
     },
     "servers": [
         {
-            "url": "http://bnml-laravel-backend.test/api/v1"
+            "url": "http://bnml-laravel-backend.test/api/v1/staff"
         }
     ],
     "paths": {
-        "/staff/login": {
+        "/login": {
             "post": {
                 "tags": [
                     "Authentication"
@@ -111,7 +111,7 @@
                 "security": []
             }
         },
-        "/staff/logout": {
+        "/logout": {
             "post": {
                 "tags": [
                     "Authentication"
@@ -157,7 +157,7 @@
                 ]
             }
         },
-        "/staff/user": {
+        "/user": {
             "get": {
                 "tags": [
                     "User"
