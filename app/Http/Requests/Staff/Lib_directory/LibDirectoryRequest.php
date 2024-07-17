@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Staff\Lib_activities;
+namespace App\Http\Requests\Staff\Lib_directory;
 
 use App\Http\Requests\BaseRequest;
 
-class LibActivitiesRequest extends BaseRequest
+class LibDirectoryRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.

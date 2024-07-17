@@ -509,6 +509,358 @@
                 }
             }
         },
+        "/lib_directory/{id}": {
+            "get": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library Directory",
+                "description": "library Directory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of lib Directory",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library Directory",
+                "description": "library Directory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of lib Directory",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "lib Directory update"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string",
+                                        "example": "lib Directory update"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library Directory",
+                "description": "library Directory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of lib Directory",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lib_directory": {
+            "get": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library Directory",
+                "description": "library Directory",
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "name": "lib activities",
+                                            "description": "lib description",
+                                            "created_by": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library directory",
+                "description": "library directory",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "lib directory"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string",
+                                        "example": "lib directory"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user": {
             "get": {
                 "tags": [
