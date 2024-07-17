@@ -181,7 +181,7 @@ class UserController extends Controller
 
       /**
      * @OA\Post(
-     *      path="/user/login/{email_address}/{pair_token}",
+     *      path="/user/login/pairing",
      *      tags={"User"},
      *      security={},
      *      summary="Post Login email pair token",
