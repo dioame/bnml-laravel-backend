@@ -10,6 +10,756 @@
         }
     ],
     "paths": {
+        "/activities/{id}": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Activities",
+                "description": " Activities",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of  Activities",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Activities",
+                "description": "Activities",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Activities",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "lib_activity_id": {
+                                        "title": "lib_activity_id",
+                                        "description": "lib_activity_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "start_date": {
+                                        "title": "start_date",
+                                        "description": "start_date",
+                                        "type": "date",
+                                        "example": "2024-05-15 07:12:02"
+                                    },
+                                    "end_date": {
+                                        "title": "end_date",
+                                        "description": "end_date",
+                                        "type": "date",
+                                        "example": "2024-07-15 07:12:02"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Activities",
+                "description": "Activities",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Activities",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/activities": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Activities",
+                "description": " Activities",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/3KraolRfMEMDM3np3ITupVX0zMab9B0wopX6GAh0.png"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/ixvEDgxeKqViC3xNXNoSVCGm4IkKQrGbvXCwIyKx.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Activities",
+                "description": "Activities",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "lib_activity_id": {
+                                        "title": "lib_activity_id",
+                                        "description": "lib_activity_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "start_date": {
+                                        "title": "start_date",
+                                        "description": "start_date",
+                                        "type": "date",
+                                        "example": "2024-05-15 07:12:02"
+                                    },
+                                    "end_date": {
+                                        "title": "end_date",
+                                        "description": "end_date",
+                                        "type": "date",
+                                        "example": "2024-07-15 07:12:02"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/attendance/{id}": {
+            "get": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "Attendance",
+                "description": " Attendance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Attendance",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "Attendance",
+                "description": "Attendance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Attendance",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "title": "user_id",
+                                        "description": "user_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "activity_id": {
+                                        "title": "activity_id",
+                                        "description": "activity_id",
+                                        "type": "number",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "Attendance",
+                "description": "Attendance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Attendance",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/attendance": {
+            "get": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "Attendance",
+                "description": "Attendance",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/3KraolRfMEMDM3np3ITupVX0zMab9B0wopX6GAh0.png"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/ixvEDgxeKqViC3xNXNoSVCGm4IkKQrGbvXCwIyKx.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Attendance"
+                ],
+                "summary": "Attendance",
+                "description": "Attendance",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "title": "user_id",
+                                        "description": "user_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "activity_id": {
+                                        "title": "activity_id",
+                                        "description": "activity_id",
+                                        "type": "number",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/login": {
             "post": {
                 "tags": [
@@ -157,6 +907,11 @@
                 ]
             }
         },
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
         "/directory/{id}": {
             "get": {
                 "tags": [
@@ -526,6 +1281,747 @@
                 }
             }
         },
+<<<<<<< Updated upstream
+=======
+        "/lib_installation/{id}": {
+            "get": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Installation",
+                "description": " Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Library Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Library Installation",
+                "description": "Library Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of lib Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "name update"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string",
+                                        "example": "description update"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Library Installation",
+                "description": "Library Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Library Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/installation/{id}": {
+            "get": {
+                "tags": [
+                    "Installation"
+                ],
+                "summary": "Installation",
+                "description": " Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Installation"
+                ],
+                "summary": "Installation",
+                "description": "Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "title": "user_id",
+                                        "description": "user_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "lib_installation_id": {
+                                        "title": "lib_installation_id",
+                                        "description": "lib_installation_id",
+                                        "type": "number",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Installation"
+                ],
+                "summary": "Installation",
+                "description": "Installation",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of Installation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/installation": {
+            "get": {
+                "tags": [
+                    "Installation"
+                ],
+                "summary": "Installation",
+                "description": "Installation",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/3KraolRfMEMDM3np3ITupVX0zMab9B0wopX6GAh0.png"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/ixvEDgxeKqViC3xNXNoSVCGm4IkKQrGbvXCwIyKx.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Installation"
+                ],
+                "summary": "Installation",
+                "description": "Installation",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "title": "user_id",
+                                        "description": "user_id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "lib_installation_id": {
+                                        "title": "lib_installation_id",
+                                        "description": "lib_installation_id",
+                                        "type": "number",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/lib_installation": {
+            "get": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Library Installation",
+                "description": "Library Installation",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        },
+                                        {
+                                            "id": 6,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/3KraolRfMEMDM3np3ITupVX0zMab9B0wopX6GAh0.png"
+                                        },
+                                        {
+                                            "id": 7,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/ixvEDgxeKqViC3xNXNoSVCGm4IkKQrGbvXCwIyKx.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Library Installation",
+                "description": "Library Installation",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "name"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         "/lib_activities/{id}": {
             "get": {
                 "tags": [
