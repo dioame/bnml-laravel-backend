@@ -13,4 +13,12 @@ return [
     '3008' => 'File id incorrect',
     '3009' => 'Path incorrect',
 
+    '30010' => 'Lib Activity id required',
+    '30011' => 'Start date required',
+    '30012' => 'End date required',
+
+    '30013' => 'User Id required',
+    '30014' => 'Library Installation id required',
+    '30015' => 'Activities id required',
+
 ];
