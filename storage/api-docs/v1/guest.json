@@ -166,13 +166,11 @@
                     "description": "User registration information",
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "required": [
                                     "firstname",
-                                    "middlename",
                                     "lastname",
-                                    "extensionname",
                                     "birth_date",
                                     "address",
                                     "gender",
