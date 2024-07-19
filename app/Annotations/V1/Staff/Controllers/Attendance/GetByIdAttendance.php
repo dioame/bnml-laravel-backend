@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Annotations\V1\Staff\Controllers\Lib_activities;
+namespace App\Annotations\V1\Staff\Controllers\Attendance;
 
 use App\Annotations\V1\Guest\Controllers\Controller;
 
-class GetByIdLibActivities extends Controller
+class GetByAttendance extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/lib_activities/{id}",
-     *      tags={"Lib Activities"},
-     *      summary="library activities",
-     *      description="library activities",
+     *      path="/attendance/{id}",
+     *      tags={"Attendance"},
+     *      summary="Attendance",
+     *      description=" Attendance",
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
-     *          description="ID of lib activities",
+     *          description="ID of Attendance",
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
@@ -31,10 +31,9 @@ class GetByIdLibActivities extends Controller
   "description": "OK",
   "data": {
     {
-      "id": 1,
-      "name": "lib activities",
-      "description": "lib description",
-      "created_by": 1
+      "id": 5,
+      "file_id": null,
+      "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
     }
 }
 }

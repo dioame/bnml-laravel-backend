@@ -1,43 +1,35 @@
 <?php
 
-namespace App\Annotations\V1\Staff\Controllers\Lib_activities;
+namespace App\Annotations\V1\Staff\Controllers\Attendance;
 
 use App\Annotations\V1\Guest\Controllers\Controller;
 
-class GetByIdLibActivities extends Controller
+class DeleteAttendance extends Controller
 {
     /**
-     * @OA\Get(
-     *      path="/lib_activities/{id}",
-     *      tags={"Lib Activities"},
-     *      summary="library activities",
-     *      description="library activities",
+     * @OA\Delete(
+     *      path="/attendance/{id}",
+     *      tags={"Attendance"},
+     *      summary="Attendance",
+     *      description="Attendance",
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
-     *          description="ID of lib activities",
+     *          description="Attendance",
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
      *              format="int64"
      *          )
      *      ),
-     *       @OA\Response(
+     *      @OA\Response(
      *          response="200",
      *          description="OK",
      *          @OA\JsonContent(
-    example= {
-  "status": "success",
-  "description": "OK",
-  "data": {
-    {
-      "id": 1,
-      "name": "lib activities",
-      "description": "lib description",
-      "created_by": 1
-    }
-}
-}
+     *              example={
+     *                  "status": "success",
+     *                  "description": "ok"
+     *              }
      *          )
      *      ),
      *      @OA\Response(

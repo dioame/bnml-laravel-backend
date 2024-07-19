@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Staff\Directory;
+namespace App\Http\Resources\Staff\Activities;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class DirectoryCollection extends ResourceCollection
+class ActivitiesCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -12,7 +12,7 @@ class DirectoryCollection extends ResourceCollection
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public $collects = \App\Http\Resources\Staff\Directory\DirectoryResource::class;
+    public $collects = \App\Http\Resources\Staff\Activities\ActivitiesResource::class;
 
     public function toArray($request): array
     {

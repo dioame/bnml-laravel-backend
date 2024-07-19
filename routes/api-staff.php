@@ -7,6 +7,11 @@ use App\Http\Controllers\Api\V1\Staff\Auth\AuthController;
 use App\Http\Controllers\Api\V1\Staff\Users\UserController;
 use App\Http\Controllers\Api\V1\Staff\Lib_activities\LibActivitiesController;
 use App\Http\Controllers\Api\V1\Staff\Lib_directory\LibDirectoryController;
+use App\Http\Controllers\Api\V1\Staff\Directory\DirectoryController;
+use App\Http\Controllers\Api\V1\Staff\Activities\ActivitiesController;
+use App\Http\Controllers\Api\V1\Staff\Lib_installation\Lib_installationController;
+use App\Http\Controllers\Api\V1\Staff\Installation\InstallationController;
+use App\Http\Controllers\Api\V1\Staff\Attendance\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,34 +38,24 @@ Route::prefix('staff')->group(function () {
         //Library Directory
         Route::apiResource('lib_directory', LibDirectoryController::class );
 
-    //     // Challenges
-    //     // for some reason when i use api resource the staff/challenges/{id} is not register on route list staff/challenges/{challenge} instead
-    //     Route::get('challenges', [ChallengeController::class, 'index']);
-    //     Route::post('challenges', [ChallengeController::class, 'store']);
-    //     Route::delete('challenges/{id}', [ChallengeController::class, 'destroy']);
-    //     Route::put('challenges/{id}', [ChallengeController::class, 'update']);
-    //     Route::get('challenges/{id}', [ChallengeController::class, 'show']);
-    //     Route::patch('challenges/{id}/undeletion', [ChallengeController::class, 'restore']);
-
-    //     // Challenges Photo
-    //     Route::post('challenge/photo', [ChallengesPhotoController::class, 'store']);
-    //     // Route::put('challenge/{id}/photo', [ChallengesPhotoController::class, 'update']);
-    //     Route::delete('challenge/{id}/photo', [ChallengesPhotoController::class, 'destroy']);
-    //     // Route::apiResource('challenges', ChallengeController::class);
-
+        //Directory
+        Route::post('directory/{id}/update', [DirectoryController::class, 'update']);
+        Route::apiResource('directory', DirectoryController::class );
+        
+        //Activities
+        Route::apiResource('activities', ActivitiesController::class );
+        
+        //Attendance
+        Route::apiResource('attendance', AttendanceController::class );
+        
+        //Library Installation and installation
+        Route::apiResource('lib_installation', Lib_installationController::class );
+        Route::apiResource('installation', InstallationController::class );
+        
         // Users
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::apiResource('user', UserController::class);
      
-    //     Route::get('admin', [UserController::class, 'getAdmin']);
-    //     Route::post('staff/users', [UserController::class, 'store']);
-    //     Route::post('staff/users/{id}', [UserController::class, 'store']);
-    //     Route::put('staff/users/{id}', [UserController::class, 'update']);
-    //     Route::patch('users/{id}/undeletion', [UserController::class, 'restore']);
-
-    //     //Settings
-    //     Route::post('staff/settings', [SettingsController::class, 'store']);
-    //     Route::apiResource('settings', SettingsController::class);
         
     });
     

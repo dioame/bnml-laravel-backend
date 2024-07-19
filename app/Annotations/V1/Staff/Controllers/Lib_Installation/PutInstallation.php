@@ -1,43 +1,59 @@
 <?php
 
-namespace App\Annotations\V1\Staff\Controllers\Lib_activities;
+namespace App\Annotations\V1\Staff\Controllers\lib_Installation;
 
 use App\Annotations\V1\Guest\Controllers\Controller;
 
-class GetByIdLibActivities extends Controller
+class PutInstallation extends Controller
 {
     /**
-     * @OA\Get(
-     *      path="/lib_activities/{id}",
-     *      tags={"Lib Activities"},
-     *      summary="library activities",
-     *      description="library activities",
+     * @OA\Put(
+     *      path="/lib_installation/{id}",
+     *      tags={"Library Installation"},
+     *      summary="Library Installation",
+     *      description="Library Installation",
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
-     *          description="ID of lib activities",
+     *          description="ID of lib Installation",
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
      *              format="int64"
      *          )
      *      ),
-     *       @OA\Response(
+     *      @OA\RequestBody(
+     *      required=true,
+     *      description="",
+     *      @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *              type="object",
+     *              @OA\Property(
+     *              property="name",
+     *              description="name",
+     *              title="name",
+     *              type="string",
+     *              example="name update"
+     *          ),
+     *          @OA\Property(
+     *              property="description",
+     *              description="description",
+     *              title="description",
+     *              type="string",
+     *              example="description update"
+     *          )
+     *          )
+     *      )
+     *     ),
+     *      @OA\Response(
      *          response="200",
      *          description="OK",
      *          @OA\JsonContent(
-    example= {
-  "status": "success",
-  "description": "OK",
-  "data": {
-    {
-      "id": 1,
-      "name": "lib activities",
-      "description": "lib description",
-      "created_by": 1
-    }
-}
-}
+     *              example={
+     *                  "status": "success",
+     *                  "description": "ok"
+     *              }
      *          )
      *      ),
      *      @OA\Response(

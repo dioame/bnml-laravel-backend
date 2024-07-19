@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\V1\Staff\Lib_directory;
+namespace App\Services\V1\Staff\Lib_installation;
 
 use App\Exceptions\CredentialsInvalidException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
-use App\Models\Lib_directory;
+use App\Models\Lib_installation;
 
-class LibDirectoryService
+class Lib_installationService
 {
     /**
      * @param $params
@@ -16,11 +16,11 @@ class LibDirectoryService
      */
 
     public function execute(){
-        return Lib_directory::all(); 
+        return Lib_installation::all(); 
     }
 
     public function executeId($id){
-        return Lib_directory::where('id', $id)->get();
+        return Lib_installation::where('id', $id)->get();
     }
 
     public function executePost($params)
@@ -28,7 +28,7 @@ class LibDirectoryService
         $user = Auth::User();
 
 
-        Lib_directory::create([
+        Lib_installation::create([
             'name' => $params['name'],
             'description' => $params['description'],
             'created_by' => $user->id
@@ -36,9 +36,11 @@ class LibDirectoryService
     }
 
     public function executePut($id, $params){
-        $Lib_directory = Lib_directory::findOrFail($id);
-        $Lib_directory->update($params);
-        $Lib_directory->save();
+        $lib_activities = Lib_installation::findOrFail($id);
+        $lib_activities->update($params);
+        $lib_activities->save();
+
+        return $lib_activities;
         
     }
 }
