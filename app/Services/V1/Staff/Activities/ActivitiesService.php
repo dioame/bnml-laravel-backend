@@ -18,7 +18,7 @@ class ActivitiesService
      */
 
     public function execute(){
-        return Activities::all(); 
+        return Activities::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

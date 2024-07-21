@@ -16,7 +16,7 @@ class Lib_installationService
      */
 
     public function execute(){
-        return Lib_installation::all(); 
+        return Lib_installation::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

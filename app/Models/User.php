@@ -92,4 +92,9 @@ class User extends Authenticatable
         $updatedToken = $this->tokens()->where('id', $id)->first();
         return $updatedToken;
     }
+
+    public function installations()
+    {
+        return $this->hasMany(Installation::class);
+    }
 }

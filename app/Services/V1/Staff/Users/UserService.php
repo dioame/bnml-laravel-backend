@@ -13,7 +13,7 @@ class UserService
      */
     public function execute()
     {
-        $result = User::all();
+        $result = User::orderBy('created_at', 'desc')->get();
         return $result;
     }
 

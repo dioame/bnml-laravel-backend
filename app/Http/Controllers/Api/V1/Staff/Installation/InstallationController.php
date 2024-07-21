@@ -10,13 +10,13 @@ use App\Models\Installation;
 use App\Http\Requests\Staff\Installation\InstallationRequest;
 use App\Services\V1\Staff\Installation\InstallationService;
 use App\Http\Resources\Staff\Installation\InstallationCollection;
+use App\Http\Resources\Staff\Installation\InstallationPointsCollection;
 
 
 class InstallationController extends Controller
 {
     public function index(InstallationService $service){
         $result = $service->execute();
-
         return new InstallationCollection($result);
     }
 
@@ -67,6 +67,12 @@ class InstallationController extends Controller
         $result = $service->executeId($id);
 
         return new InstallationCollection($result);
+    }
+
+    public function points(InstallationService $service){
+        $result = $service->executePoints();
+
+        return new InstallationPointsCollection($result);
     }
 
    

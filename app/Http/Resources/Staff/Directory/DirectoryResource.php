@@ -19,6 +19,8 @@ class DirectoryResource extends JsonResource
             'id' => $this->id,
             'file_id' => $this->name,
             'path' => $this->path,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString()
         ];
     }
 }

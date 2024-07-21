@@ -49,6 +49,7 @@ Route::prefix('staff')->group(function () {
         Route::apiResource('attendance', AttendanceController::class );
         
         //Library Installation and installation
+        Route::get('installation/points', [InstallationController::class, 'points']);
         Route::apiResource('lib_installation', Lib_installationController::class );
         Route::apiResource('installation', InstallationController::class );
         

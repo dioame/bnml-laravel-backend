@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Guest\Signup\SignupController;
 use App\Http\Controllers\Api\V1\Guest\Users\UserController;
 use App\Http\Controllers\Api\V1\Guest\Auth\AuthController;
+use App\Http\Controllers\Api\V1\Guest\Installation\InstallationController;
 // use App\Http\Controllers\Api\V1\Guest\Challenges\ChallengesController;
 // use App\Http\Controllers\Api\V1\Guest\Join\JoinController;
 // use App\Http\Controllers\Api\V1\Guest\Location\LocationController;
@@ -48,14 +49,17 @@ Route::prefix('guest')->group(function () {
     // });
 
     
-
+    
     // Route::group(['middleware' => ['auth:sanctum', 'otp_confirmed']], function () {
-    Route::group(['middleware' => ['auth:sanctum']], function () {
-        //User
-        Route::apiResource('user', UserController::class);
-
-
-        Route::post('logout', [AuthController::class, 'logout']);
+        Route::group(['middleware' => ['auth:sanctum']], function () {
+            //User
+            Route::apiResource('user', UserController::class);
+            
+            
+            Route::post('logout', [AuthController::class, 'logout']);
+    
+            //points
+            Route::get('installation/points', [InstallationController::class, 'points']);
     //     Route::post('join', [JoinController::class, 'store']);
 
     //     Route::apiResource('user_details', UserController::class);
@@ -81,9 +85,6 @@ Route::prefix('guest')->group(function () {
     //     Route::apiResource('activities', ActivityController::class);
     //     Route::get('activities/points', [ActivityController::class, 'show']);
     //     Route::post('activities', [ActivityController::class, 'store']);
-
-    //     //points
-    //     Route::apiResource('points/{activity_id}/', PointsController::class);
 
     });
     
