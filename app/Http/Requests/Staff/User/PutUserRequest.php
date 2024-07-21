@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Guest\Signup;
+namespace App\Http\Requests\Staff\User;
 
 use App\Http\Requests\BaseRequest;
 
-class SignupRequest extends BaseRequest
+class PutUserRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,10 @@ class SignupRequest extends BaseRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
             "firstname" => 'required',
+            "middlename" => 'required',
             "lastname" => 'required',
+            "extensionname" => 'required',
             "birth_date" => 'required',
             "address" => 'required',
             "gender" => 'required',
@@ -44,10 +44,15 @@ class SignupRequest extends BaseRequest
         $code = $this->customCode();
 
         return [
-            'email.required' => $code['3001'],
-            'email.email' => $code['3002'],
-            'email.unique' => $code['3004'],
-            'password.required' => $code['3003'],
+            'firstname.required' => $code['30016'],
+            'middlename.required' => $code['30017'],
+            'lastname.required' => $code['30018'],
+            'extensionname.required' => $code['30019'],
+            'birth_date.required' => $code['30020'],
+            'address.required' => $code['30021'],
+            'gender.required' => $code['30022'],
+            'mobile.required' => $code['30023'],
+            'role.required' => $code['30024'],
         ];
     }
 }

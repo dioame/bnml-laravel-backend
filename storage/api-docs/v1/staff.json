@@ -907,11 +907,6 @@
                 ]
             }
         },
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
         "/directory/{id}": {
             "get": {
                 "tags": [
@@ -1281,8 +1276,6 @@
                 }
             }
         },
-<<<<<<< Updated upstream
-=======
         "/lib_installation/{id}": {
             "get": {
                 "tags": [
@@ -2020,8 +2013,6 @@
                 }
             }
         },
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         "/lib_activities/{id}": {
             "get": {
                 "tags": [
@@ -2758,6 +2749,175 @@
                                         "email": "test@test.com",
                                         "mobile": "09000000000"
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user account - auth  information",
+                "description": "Update user account - auth information",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "firstname": {
+                                        "title": "firstname",
+                                        "description": "firstname",
+                                        "type": "string",
+                                        "example": "firstname update"
+                                    },
+                                    "middlename": {
+                                        "title": "middlename",
+                                        "description": "middlename",
+                                        "type": "string",
+                                        "example": "middlename update"
+                                    },
+                                    "lastname": {
+                                        "title": "lastname",
+                                        "description": "lastname",
+                                        "type": "string",
+                                        "example": "lastname update"
+                                    },
+                                    "extensionname": {
+                                        "title": "extensionname",
+                                        "description": "extensionname",
+                                        "type": "string",
+                                        "example": "extensionname update"
+                                    },
+                                    "birth_date": {
+                                        "title": "birth_date",
+                                        "description": "birth_date",
+                                        "type": "date",
+                                        "example": "1978-08-25"
+                                    },
+                                    "address": {
+                                        "title": "address",
+                                        "description": "address",
+                                        "type": "string",
+                                        "example": "address update"
+                                    },
+                                    "gender": {
+                                        "title": "gender",
+                                        "description": "gender",
+                                        "type": "string",
+                                        "example": "male"
+                                    },
+                                    "mobile": {
+                                        "title": "mobile",
+                                        "description": "mobile",
+                                        "type": "string",
+                                        "example": "+639091653300"
+                                    },
+                                    "role": {
+                                        "title": "role",
+                                        "description": "role",
+                                        "type": "string",
+                                        "example": "labor 2"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete own account",
+                "description": "Delete own account",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
                                 }
                             }
                         }
