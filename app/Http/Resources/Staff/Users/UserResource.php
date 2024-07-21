@@ -26,6 +26,8 @@ class UserResource extends JsonResource
             'mobile' => $this->mobile,
             'address' => $this->address,
             'role' => $this->role,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString()
         ];
     }
 }
