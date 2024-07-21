@@ -54,6 +54,8 @@ Route::prefix('staff')->group(function () {
         
         // Users
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
+        Route::put('user', [UserController::class, 'update']);
+        Route::delete('user', [UserController::class, 'destroy']);
         Route::apiResource('user', UserController::class);
      
         

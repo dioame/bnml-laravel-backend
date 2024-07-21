@@ -17,14 +17,12 @@ class SignupController extends Controller
  *         required=true,
  *         description="User registration information",
  *         @OA\MediaType(
- *             mediaType="application/json",
+ *             mediaType="multipart/form-data",
  *             @OA\Schema(
  *                 type="object",
  *                 required={
  *                     "firstname",
- *                     "middlename",
  *                     "lastname",
- *                     "extensionname",
  *                     "birth_date",
  *                     "address",
  *                     "gender",

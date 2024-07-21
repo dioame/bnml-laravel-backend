@@ -3,6 +3,7 @@ namespace App\Services\V1\Staff\Users;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -14,5 +15,11 @@ class UserService
     {
         $result = User::all();
         return $result;
+    }
+
+    public function executeUpdate($params){
+        $user = Auth::User();
+
+        $user->update($params);
     }
 }
