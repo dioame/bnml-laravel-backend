@@ -5,7 +5,7 @@ namespace App\Http\Resources\Staff\Installation;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InstallationResource extends JsonResource
+class InstallationPointsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,12 @@ class InstallationResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        
         return [
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'installation_id' => $this->installation_id,
-            'created_at' => $this->created_at->toDateTimeString(),
-            'updated_at' => $this->updated_at->toDateTimeString()
+            'user_id' => $this['user_id'],
+            'installation' => $this->resource['installation'],
+            'points' => $this->resource['points'],
+            'rank' => $this->resource['rank'],
         ];
     }
 }
+

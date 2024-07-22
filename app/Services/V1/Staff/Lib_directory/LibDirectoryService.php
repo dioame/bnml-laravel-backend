@@ -16,7 +16,7 @@ class LibDirectoryService
      */
 
     public function execute(){
-        return Lib_directory::all(); 
+        return Lib_directory::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

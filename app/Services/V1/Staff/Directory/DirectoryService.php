@@ -18,7 +18,7 @@ class DirectoryService
      */
 
     public function execute(){
-        return Directory::all(); 
+        return Directory::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

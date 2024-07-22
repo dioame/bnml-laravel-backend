@@ -20,6 +20,8 @@ class LibDirectoryResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'created_by' => $this->created_by,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString()
         ];
     }
 }

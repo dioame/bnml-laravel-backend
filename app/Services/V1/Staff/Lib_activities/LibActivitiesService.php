@@ -16,7 +16,7 @@ class LibActivitiesService
      */
 
     public function execute(){
-        return Lib_activities::all(); 
+        return Lib_activities::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

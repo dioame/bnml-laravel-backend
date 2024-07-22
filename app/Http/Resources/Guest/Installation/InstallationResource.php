@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Staff\Installation;
+namespace App\Http\Resources\Guest\Installation;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -18,9 +18,7 @@ class InstallationResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'installation_id' => $this->installation_id,
-            'created_at' => $this->created_at->toDateTimeString(),
-            'updated_at' => $this->updated_at->toDateTimeString()
+            'points' => $this->points,
         ];
     }
 }

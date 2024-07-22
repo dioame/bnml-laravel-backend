@@ -16,7 +16,7 @@ class AttendanceService
      */
 
     public function execute(){
-        return Attendance::all(); 
+        return Attendance::orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){
