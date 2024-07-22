@@ -1130,9 +1130,9 @@
                                         "type": "number",
                                         "example": 1
                                     },
-                                    "photo": {
+                                    "file": {
                                         "title": "photo",
-                                        "description": "photo",
+                                        "description": "file",
                                         "type": "file"
                                     }
                                 },
@@ -1219,9 +1219,9 @@
                                         "type": "number",
                                         "example": "1"
                                     },
-                                    "photo": {
+                                    "file": {
                                         "title": "photo",
-                                        "description": "photo",
+                                        "description": "file",
                                         "type": "file"
                                     }
                                 },

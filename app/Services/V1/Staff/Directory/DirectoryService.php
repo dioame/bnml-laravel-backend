@@ -27,7 +27,7 @@ class DirectoryService
 
     public function executePost($params)
     {
-        $path = $this->getPath($params['photo']);
+        $path = $this->getPath($params['file']);
 
 
         Directory::create([
@@ -36,16 +36,16 @@ class DirectoryService
         ]);
     }
 
-    public function getPath($photo){
-        $name = $photo->getClientOriginalName();
-        $path = $photo->store('public/photo');
+    public function getPath($file){
+        $name = $file->getClientOriginalName();
+        $path = $file->store('public/file');
         $full_url = asset(Storage::url($path));
 
         return $full_url;
     }
 
     public function executePut($id, $params){
-        $path = $this->getPath($params['photo']);
+        $path = $this->getPath($params['file']);
         $params['path'] = $path;
 
         
