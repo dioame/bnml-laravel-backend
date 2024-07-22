@@ -54,6 +54,8 @@ Route::prefix('staff')->group(function () {
         Route::apiResource('installation', InstallationController::class );
         
         // Users
+
+        Route::get('user/search/{term}', [UserController::class, 'getUserByTerm']);
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::put('user', [UserController::class, 'update']);
         Route::delete('user', [UserController::class, 'destroy']);

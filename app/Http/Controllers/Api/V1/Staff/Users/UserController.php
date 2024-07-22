@@ -10,11 +10,13 @@ use App\Models\User;
 use App\Services\V1\Staff\Users\UserService;
 use App\Services\V1\Staff\Users\UserServiceBy;
 use App\Services\V1\Staff\Users\UserServiceByEmail;
+use App\Services\V1\Staff\Users\UserServiceByTerm;
 use App\Services\V1\Staff\Users\UserLoginEmailService;
 use App\Http\Resources\Staff\Users\UserCollection;
 use App\Http\Resources\Staff\Users\UserResource;
+use App\Http\Resources\Staff\Users\UserResourceTerm;
+use App\Http\Resources\Staff\Users\UserResourceTermCollection;
 use App\Http\Requests\Staff\User\PutUserRequest;
-
 
 
 
@@ -81,5 +83,10 @@ class UserController extends Controller
             ],401);
         }      
       
+    }
+
+    public function getUserByTerm(UserServiceByTerm $service, $term){
+        $result = $service->execute($term);
+        return new UserResourceTermCollection($result);
     }
 }

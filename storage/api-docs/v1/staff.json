@@ -3321,6 +3321,75 @@
                 },
                 "security": []
             }
+        },
+        "/user/search/{term}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Search Term",
+                "description": "Search Term",
+                "parameters": [
+                    {
+                        "name": "term",
+                        "in": "path",
+                        "description": "Term",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "name": "Gino Liza Kirlin",
+                                            "created_at": "2024-07-17 03:26:57",
+                                            "updated_at": "2024-07-17 03:26:57"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
