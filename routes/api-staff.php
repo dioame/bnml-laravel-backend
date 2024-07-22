@@ -12,6 +12,9 @@ use App\Http\Controllers\Api\V1\Staff\Activities\ActivitiesController;
 use App\Http\Controllers\Api\V1\Staff\Lib_installation\Lib_installationController;
 use App\Http\Controllers\Api\V1\Staff\Installation\InstallationController;
 use App\Http\Controllers\Api\V1\Staff\Attendance\AttendanceController;
+use App\Http\Controllers\Api\V1\Staff\Meetings\MeetingsController;
+use App\Http\Controllers\Api\V1\Staff\FlagTribute\FlagTributeController;
+use App\Http\Controllers\Api\V1\Staff\SummaryPoints\SummaryPointsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +63,16 @@ Route::prefix('staff')->group(function () {
         Route::put('user', [UserController::class, 'update']);
         Route::delete('user', [UserController::class, 'destroy']);
         Route::apiResource('user', UserController::class);
+        
+        // Meetings
+        Route::get('meeting/stated-meeting/points', [MeetingsController::class, 'getStatedMeeting']);
+        Route::get('meeting/special-meeting/points', [MeetingsController::class, 'getSpecialMeeting']);
+        
+        //FlagTribute
+        Route::apiResource('flag-tribute', FlagTributeController::class );
+        
+        //Overall Summary Points
+        Route::get('overall-summary/points', [SummaryPointsController::class, 'index']);
      
         
     });
