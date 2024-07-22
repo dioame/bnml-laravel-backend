@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Staff\Directory;
+namespace App\Http\Resources\Staff\Lib_directory;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DirectoryResource extends JsonResource
+class LibDirectoryTermResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +17,8 @@ class DirectoryResource extends JsonResource
         
         return [
             'id' => $this->id,
-            'file_id' => $this->file_id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'file_name' => $this->file_name,
-            'path' => $this->path,
+            'name' => $this->name.' - '.$this->description,
+            'created_by' => $this->created_by,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString()
         ];

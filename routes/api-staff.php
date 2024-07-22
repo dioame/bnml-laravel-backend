@@ -39,6 +39,7 @@ Route::prefix('staff')->group(function () {
         Route::apiResource('lib_activities', LibActivitiesController::class );
 
         //Library Directory
+        Route::get('lib_directory/search', [LibDirectoryController::class, 'getDirectoryByTerm']);
         Route::apiResource('lib_directory', LibDirectoryController::class );
 
         //Directory

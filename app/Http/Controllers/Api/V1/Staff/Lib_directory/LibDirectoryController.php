@@ -10,6 +10,8 @@ use App\Models\Lib_directory;
 use App\Http\Requests\Staff\Lib_directory\LibDirectoryRequest;
 use App\Services\V1\Staff\Lib_directory\LibDirectoryService;
 use App\Http\Resources\Staff\Lib_directory\LibDirectoryCollection;
+use App\Services\V1\Staff\Lib_directory\LibDirectoryTermService;
+use App\Http\Resources\Staff\Lib_directory\LibDirectoryTermCollection;
 
 
 class LibDirectoryController extends Controller
@@ -58,9 +60,12 @@ class LibDirectoryController extends Controller
 
     public function show($id, LibDirectoryService $service){
         $result = $service->executeId($id);
-
         return new LibDirectoryCollection($result);
     }
 
-   
+    public function getDirectoryByTerm(LibDirectoryTermService $service,Request $request){
+        $result = $service->execute($request->term);
+        return new LibDirectoryTermCollection($result);
+    }
+
 }

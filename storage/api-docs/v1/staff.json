@@ -3324,6 +3324,66 @@
                 }
             }
         },
+        "/lib_directory/search": {
+            "get": {
+                "tags": [
+                    "Lib Directory"
+                ],
+                "summary": "library Directory",
+                "description": "library Directory",
+                "parameters": [
+                    {
+                        "name": "term",
+                        "in": "query",
+                        "description": "Term of lib Directory"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/meeting/special-meeting/points": {
             "get": {
                 "tags": [

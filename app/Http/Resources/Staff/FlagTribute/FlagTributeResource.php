@@ -18,6 +18,7 @@ class FlagTributeResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'name' => $this->user->firstname.' '.$this->user->middlename.' '.$this->user->lastname,
             'points' => $this->points,
             'rank' => $this->rank,
             'created_at' => $this->created_at->toDateTimeString(),

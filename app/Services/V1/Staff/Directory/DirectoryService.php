@@ -27,7 +27,7 @@ class DirectoryService
 
     public function executePost($params)
     {
-        $path = $this->getPath($params['file']);
+        $path = $this->getPath($params['file'],$params['file']->getClientOriginalName());
 
         Directory::create([
             'file_id' => $params['file_id'],
@@ -38,11 +38,13 @@ class DirectoryService
         ]);
     }
 
-    public function getPath($file){
-        $path = $file->store('public/file');
-        $full_url = asset(Storage::url($path));
+    public function getPath($file,$filename){
+        // $path = $file->store('public/file');
+        $filename = date('ymdhis').'-'.$filename;
+        $path = $file->storeAs('uploads', $filename, 'public');
+        $full_url = Storage::url($path);
 
-        return $path;
+        return $full_url;
     }
 
     public function executePut($id, $params){
