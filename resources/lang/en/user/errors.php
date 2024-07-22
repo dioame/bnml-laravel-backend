@@ -31,4 +31,6 @@ return [
     '30023' => 'mobile id required',
     '30024' => 'role id required',
 
+    '30025' => 'points id required',
+
 ];

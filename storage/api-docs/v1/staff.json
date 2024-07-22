@@ -1276,6 +1276,363 @@
                 }
             }
         },
+        "/flag-tribute/{id}": {
+            "get": {
+                "tags": [
+                    "FlagTribute"
+                ],
+                "summary": "Flag Tribute",
+                "description": "Flag Tribute, get the points of specific user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 2,
+                                            "user_id": 4,
+                                            "points": 10,
+                                            "rank": 1,
+                                            "created_at": "2024-07-22 07:00:21",
+                                            "updated_at": "2024-07-22 07:00:21"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "FlagTribute"
+                ],
+                "summary": "Flag Tribute, update the points if there is necessary ",
+                "description": "Flag Tribute ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "points": {
+                                        "title": "points",
+                                        "description": "points",
+                                        "type": "number",
+                                        "example": 10
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "FlagTribute"
+                ],
+                "summary": "Flag Tribute",
+                "description": "Flag Tribute, delete the points of a user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/flag-tribute": {
+            "get": {
+                "tags": [
+                    "FlagTribute"
+                ],
+                "summary": "Flag Tribute, get the points of all users",
+                "description": "Flag Tribute",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 2,
+                                            "user_id": 4,
+                                            "points": 10,
+                                            "rank": 1,
+                                            "created_at": "2024-07-22 07:00:21",
+                                            "updated_at": "2024-07-22 07:00:21"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "FlagTribute"
+                ],
+                "summary": "Flag Tribute, Add points of a user every storing a points",
+                "description": "Flag Tribute",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "title": "user id",
+                                        "description": "user id",
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "points": {
+                                        "title": "points",
+                                        "description": "points",
+                                        "type": "number",
+                                        "example": 10
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/lib_installation/{id}": {
             "get": {
                 "tags": [
@@ -2838,6 +3195,484 @@
                                 "example": {
                                     "status": "success",
                                     "description": "Created"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/meeting/special-meeting/points": {
+            "get": {
+                "tags": [
+                    "Meeting"
+                ],
+                "summary": "special Meeting points",
+                "description": " special Meeting points",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "user_id": 11,
+                                            "installation": [
+                                                {
+                                                    "id": 1,
+                                                    "user_id": 11,
+                                                    "installation_id": 1,
+                                                    "created_at": "2024-07-21T09:10:07.000000Z",
+                                                    "updated_at": "2024-07-21T09:10:07.000000Z"
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "user_id": 11,
+                                                    "installation_id": 3,
+                                                    "created_at": "2024-07-21T09:10:11.000000Z",
+                                                    "updated_at": "2024-07-21T09:10:11.000000Z"
+                                                },
+                                                {
+                                                    "id": 3,
+                                                    "user_id": 11,
+                                                    "installation_id": 4,
+                                                    "created_at": "2024-07-21T09:10:16.000000Z",
+                                                    "updated_at": "2024-07-21T09:10:16.000000Z"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "user_id": 11,
+                                                    "installation_id": 7,
+                                                    "created_at": "2024-07-21T09:10:18.000000Z",
+                                                    "updated_at": "2024-07-21T09:10:18.000000Z"
+                                                }
+                                            ],
+                                            "points": 8
+                                        },
+                                        {
+                                            "user_id": 2,
+                                            "installation": [
+                                                {
+                                                    "id": 5,
+                                                    "user_id": 2,
+                                                    "installation_id": 7,
+                                                    "created_at": "2024-07-21T12:18:10.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:10.000000Z"
+                                                },
+                                                {
+                                                    "id": 6,
+                                                    "user_id": 2,
+                                                    "installation_id": 10,
+                                                    "created_at": "2024-07-21T12:18:13.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:13.000000Z"
+                                                }
+                                            ],
+                                            "points": 4
+                                        },
+                                        {
+                                            "user_id": 1,
+                                            "installation": [
+                                                {
+                                                    "id": 7,
+                                                    "user_id": 1,
+                                                    "installation_id": 1,
+                                                    "created_at": "2024-07-21T12:18:19.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:19.000000Z"
+                                                },
+                                                {
+                                                    "id": 8,
+                                                    "user_id": 1,
+                                                    "installation_id": 3,
+                                                    "created_at": "2024-07-21T12:18:21.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:21.000000Z"
+                                                },
+                                                {
+                                                    "id": 9,
+                                                    "user_id": 1,
+                                                    "installation_id": 5,
+                                                    "created_at": "2024-07-21T12:18:25.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:25.000000Z"
+                                                },
+                                                {
+                                                    "id": 10,
+                                                    "user_id": 1,
+                                                    "installation_id": 6,
+                                                    "created_at": "2024-07-21T12:18:29.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:29.000000Z"
+                                                },
+                                                {
+                                                    "id": 11,
+                                                    "user_id": 1,
+                                                    "installation_id": 7,
+                                                    "created_at": "2024-07-21T12:18:31.000000Z",
+                                                    "updated_at": "2024-07-21T12:18:31.000000Z"
+                                                }
+                                            ],
+                                            "points": 10
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/meeting/stated-meeting/points": {
+            "get": {
+                "tags": [
+                    "Meeting"
+                ],
+                "summary": "Stated Meeting points",
+                "description": " Stated Meeting points",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "user_id": 1,
+                                            "activities": [
+                                                {
+                                                    "id": 1,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-01-15",
+                                                    "end_date": "2024-01-15",
+                                                    "created_at": "2024-07-18T15:21:46.000000Z",
+                                                    "updated_at": "2024-07-18T15:21:46.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "January"
+                                                },
+                                                {
+                                                    "id": 2,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-02-15",
+                                                    "end_date": "2024-02-15",
+                                                    "created_at": "2024-07-18T15:22:09.000000Z",
+                                                    "updated_at": "2024-07-18T15:22:09.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "February"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-03-15",
+                                                    "end_date": "2024-03-15",
+                                                    "created_at": "2024-07-18T15:22:36.000000Z",
+                                                    "updated_at": "2024-07-18T15:22:36.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "March"
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-04-15",
+                                                    "end_date": "2024-04-15",
+                                                    "created_at": "2024-07-18T15:22:45.000000Z",
+                                                    "updated_at": "2024-07-18T15:22:45.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "April"
+                                                }
+                                            ],
+                                            "points": 20
+                                        },
+                                        {
+                                            "user_id": 2,
+                                            "activities": [
+                                                {
+                                                    "id": 1,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-01-15",
+                                                    "end_date": "2024-01-15",
+                                                    "created_at": "2024-07-18T15:21:46.000000Z",
+                                                    "updated_at": "2024-07-18T15:21:46.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "January"
+                                                }
+                                            ],
+                                            "points": 5
+                                        },
+                                        {
+                                            "user_id": 3,
+                                            "activities": [
+                                                {
+                                                    "id": 1,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-01-15",
+                                                    "end_date": "2024-01-15",
+                                                    "created_at": "2024-07-18T15:21:46.000000Z",
+                                                    "updated_at": "2024-07-18T15:21:46.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "January"
+                                                },
+                                                {
+                                                    "id": 4,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-03-15",
+                                                    "end_date": "2024-03-15",
+                                                    "created_at": "2024-07-18T15:22:36.000000Z",
+                                                    "updated_at": "2024-07-18T15:22:36.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "March"
+                                                },
+                                                {
+                                                    "id": 5,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-04-15",
+                                                    "end_date": "2024-04-15",
+                                                    "created_at": "2024-07-18T15:22:45.000000Z",
+                                                    "updated_at": "2024-07-18T15:22:45.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "April"
+                                                }
+                                            ],
+                                            "points": 15
+                                        },
+                                        {
+                                            "user_id": 4,
+                                            "activities": [
+                                                {
+                                                    "id": 1,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-01-15",
+                                                    "end_date": "2024-01-15",
+                                                    "created_at": "2024-07-18T15:21:46.000000Z",
+                                                    "updated_at": "2024-07-18T15:21:46.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "January"
+                                                }
+                                            ],
+                                            "points": 5
+                                        },
+                                        {
+                                            "user_id": 5,
+                                            "activities": [
+                                                {
+                                                    "id": 1,
+                                                    "lib_activity_id": 1,
+                                                    "start_date": "2024-01-15",
+                                                    "end_date": "2024-01-15",
+                                                    "created_at": "2024-07-18T15:21:46.000000Z",
+                                                    "updated_at": "2024-07-18T15:21:46.000000Z",
+                                                    "deleted_at": null,
+                                                    "month": "January"
+                                                }
+                                            ],
+                                            "points": 5
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/overall-summary/points": {
+            "get": {
+                "tags": [
+                    "SUMMARY POINTS"
+                ],
+                "summary": "SUMMARY points",
+                "description": " SUMMARY points",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "stated_meeting_points": 20,
+                                            "special_meeting_points": 3,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 10,
+                                            "total_points": 33
+                                        },
+                                        {
+                                            "id": 2,
+                                            "stated_meeting_points": 5,
+                                            "special_meeting_points": 6,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 4,
+                                            "total_points": 15
+                                        },
+                                        {
+                                            "id": 3,
+                                            "stated_meeting_points": 15,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 15
+                                        },
+                                        {
+                                            "id": 4,
+                                            "stated_meeting_points": 5,
+                                            "special_meeting_points": 3,
+                                            "flag+tribute_points": 10,
+                                            "installation_points": 0,
+                                            "total_points": 18
+                                        },
+                                        {
+                                            "id": 5,
+                                            "stated_meeting_points": 5,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 5
+                                        },
+                                        {
+                                            "id": 6,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 0
+                                        },
+                                        {
+                                            "id": 7,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 0
+                                        },
+                                        {
+                                            "id": 8,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 0
+                                        },
+                                        {
+                                            "id": 9,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 0
+                                        },
+                                        {
+                                            "id": 10,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 0,
+                                            "total_points": 0
+                                        },
+                                        {
+                                            "id": 11,
+                                            "stated_meeting_points": 0,
+                                            "special_meeting_points": 0,
+                                            "flag+tribute_points": 0,
+                                            "installation_points": 8,
+                                            "total_points": 8
+                                        }
+                                    ]
                                 }
                             }
                         }
