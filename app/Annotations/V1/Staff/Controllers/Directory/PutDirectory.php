@@ -22,19 +22,33 @@ class PutDirectory extends Controller
      *              format="int64"
      *          )
      *      ),
-     *      @OA\RequestBody(
+     * @OA\RequestBody(
      *      required=true,
      *      description="",
      *      @OA\MediaType(
      *          mediaType="multipart/form-data",
      *          @OA\Schema(
      *              type="object",
-     *              @OA\Property(
+     *          @OA\Property(
      *              property="file_id",
      *              description="file_id",
      *              title="file_id",
      *              type="number",
-     *              example="1"
+     *              example=1
+     *          ),
+     * @OA\Property(
+     *              property="name",
+     *              description="name",
+     *              title="name",
+     *              type="string",
+     *              example="name"
+     *          ),
+     * @OA\Property(
+     *              property="description",
+     *              description="description",
+     *              title="description",
+     *              type="string",
+     *              example="description"
      *          ),
      *          @OA\Property(
      *              property="file",

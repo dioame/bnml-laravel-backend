@@ -29,25 +29,26 @@ class DirectoryService
     {
         $path = $this->getPath($params['file']);
 
-
         Directory::create([
             'file_id' => $params['file_id'],
-            'path' => $path
+            'path' => $path,
+            'file_name' => $params['file']->getClientOriginalName(),
+            'description' => $params['description'],
+            'name' => $params['name']
         ]);
     }
 
     public function getPath($file){
-        $name = $file->getClientOriginalName();
         $path = $file->store('public/file');
         $full_url = asset(Storage::url($path));
 
-        return $full_url;
+        return $path;
     }
 
     public function executePut($id, $params){
         $path = $this->getPath($params['file']);
         $params['path'] = $path;
-
+        $params['file_name'] = $params['file']->getClientOriginalName();
         
         $directory = Directory::where('id',$id)->first();
 

@@ -1130,6 +1130,18 @@
                                         "type": "number",
                                         "example": 1
                                     },
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "name"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string",
+                                        "example": "description"
+                                    },
                                     "file": {
                                         "title": "photo",
                                         "description": "file",
@@ -1217,7 +1229,19 @@
                                         "title": "file_id",
                                         "description": "file_id",
                                         "type": "number",
-                                        "example": "1"
+                                        "example": 1
+                                    },
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "string",
+                                        "example": "name"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "string",
+                                        "example": "description"
                                     },
                                     "file": {
                                         "title": "photo",
