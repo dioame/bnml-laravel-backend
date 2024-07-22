@@ -20,7 +20,10 @@ class Directory extends Model
     protected $table = 'directory';
     protected $fillable = [
         'file_id',
-        'path'
+        'path',
+        'name',
+        'description',
+        'file_name'
     ];
 
  
