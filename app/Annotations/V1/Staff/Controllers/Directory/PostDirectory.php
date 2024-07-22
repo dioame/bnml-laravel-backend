@@ -27,8 +27,8 @@ class PostDirectory extends Controller
      *              example=1
      *          ),
      *          @OA\Property(
-     *              property="photo",
-     *              description="photo",
+     *              property="file",
+     *              description="file",
      *              title="photo",
      *              type="file"
      *          )

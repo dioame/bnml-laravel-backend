@@ -25,7 +25,7 @@ class DirectoryRequest extends BaseRequest
     {
         return [
             'file_id' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'file' => 'required|file|max:20480'
         ];
     }
 
