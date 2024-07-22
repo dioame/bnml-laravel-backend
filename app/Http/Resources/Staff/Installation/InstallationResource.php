@@ -18,7 +18,9 @@ class InstallationResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'name' => $this->user->firstname.' '.$this->user->middlename.' '.$this->user->lastname,
             'installation_id' => $this->installation_id,
+            'installation_name' => $this->libInstallation->name,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString()
         ];

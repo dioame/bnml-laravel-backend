@@ -50,12 +50,13 @@ Route::prefix('staff')->group(function () {
         
         //Library Installation and installation
         Route::get('installation/points', [InstallationController::class, 'points']);
+        Route::get('lib_installation/search', [Lib_installationController::class, 'getInstallationByTerm']);
         Route::apiResource('lib_installation', Lib_installationController::class );
         Route::apiResource('installation', InstallationController::class );
         
         // Users
 
-        Route::get('user/search/{term}', [UserController::class, 'getUserByTerm']);
+        Route::get('user/search', [UserController::class, 'getUserByTerm']);
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::put('user', [UserController::class, 'update']);
         Route::delete('user', [UserController::class, 'destroy']);

@@ -24,9 +24,13 @@ class Installation extends Model
         'installation_id'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function libInstallation(){
+        return $this->hasOne(Lib_installation::class, 'id', 'installation_id');
     }
  
   

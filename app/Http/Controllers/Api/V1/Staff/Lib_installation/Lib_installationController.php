@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Lib_installation;
 use App\Http\Requests\Staff\Lib_installation\Lib_installationRequest;
 use App\Services\V1\Staff\Lib_installation\Lib_installationService;
+use App\Services\V1\Staff\Lib_installation\Lib_installationServiceByTerm;
 use App\Http\Resources\Staff\Lib_installation\Lib_installationCollection;
+use App\Http\Resources\Staff\Lib_installation\Lib_installationByTermCollection;
+
 
 
 class Lib_installationController extends Controller
@@ -67,6 +70,11 @@ class Lib_installationController extends Controller
         $result = $service->executeId($id);
 
         return new Lib_installationCollection($result);
+    }
+
+    public function getInstallationByTerm(Lib_installationServiceByTerm $service,Request $request){
+        $result = $service->execute($request->term);
+        return new Lib_installationByTermCollection($result);
     }
 
    

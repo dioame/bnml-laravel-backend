@@ -2163,6 +2163,74 @@
                 }
             }
         },
+        "/lib_installation/search": {
+            "get": {
+                "tags": [
+                    "Library Installation"
+                ],
+                "summary": "Installation",
+                "description": "Lib Installation",
+                "parameters": [
+                    {
+                        "name": "term",
+                        "in": "query",
+                        "description": "Term of Lib Installation",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 5,
+                                            "file_id": null,
+                                            "path": "http://bnml-laravel-backend.test/storage/photo/7WPx3nxv98L01YxZYXQkypnzNGBCtM8UIfJAtv8E.png"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/lib_activities/{id}": {
             "get": {
                 "tags": [
@@ -3322,7 +3390,7 @@
                 "security": []
             }
         },
-        "/user/search/{term}": {
+        "/user/search": {
             "get": {
                 "tags": [
                     "User"
@@ -3332,9 +3400,12 @@
                 "parameters": [
                     {
                         "name": "term",
-                        "in": "path",
+                        "in": "query",
                         "description": "Term",
-                        "required": true
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {

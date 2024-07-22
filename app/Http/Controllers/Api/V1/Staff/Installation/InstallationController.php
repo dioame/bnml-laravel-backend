@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Installation;
 use App\Http\Requests\Staff\Installation\InstallationRequest;
 use App\Services\V1\Staff\Installation\InstallationService;
+use App\Services\V1\Staff\Installation\Lib_nstallationServiceByTerm;
 use App\Http\Resources\Staff\Installation\InstallationCollection;
 use App\Http\Resources\Staff\Installation\InstallationPointsCollection;
+use App\Http\Resources\Staff\Installation\Lib_installationByTermCollection;
 
 
 class InstallationController extends Controller

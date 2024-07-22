@@ -12,7 +12,13 @@ class UserServiceByTerm
      */
     public function execute($term)
     {
-        // return User::find($id);
-        return User::whereRaw("CONCAT(firstname, ' ', middlename, ' ', lastname) LIKE ?", ["%{$term}%"])->get();
+        if(!$term){
+            return User::all();
+        }else{
+            return User::
+            whereRaw("CONCAT(firstname, ' ', middlename, ' ', lastname) LIKE ?", ["%{$term}%"])
+            ->get();
+        }
+         
     }
 }

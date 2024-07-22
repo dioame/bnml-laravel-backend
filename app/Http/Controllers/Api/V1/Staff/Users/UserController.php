@@ -85,8 +85,8 @@ class UserController extends Controller
       
     }
 
-    public function getUserByTerm(UserServiceByTerm $service, $term){
-        $result = $service->execute($term);
+    public function getUserByTerm(UserServiceByTerm $service, Request $request){
+        $result = $service->execute($request->term);
         return new UserResourceTermCollection($result);
     }
 }

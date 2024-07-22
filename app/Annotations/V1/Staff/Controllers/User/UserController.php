@@ -254,15 +254,19 @@ class UserController extends Controller
 
        /**
      * @OA\GET(
-     *      path="/user/search/{term}",
+     *      path="/user/search",
      *      tags={"User"},
      *      summary="Search Term",
      *      description="Search Term",
      *      @OA\Parameter(
     *         name="term",
-    *         in="path",
+    *         in="query",
+         *         description="Term",
+     *         required=false,
     *         description="Term",
-    *         required=true,
+        *         @OA\Schema(
+     *             type="string"
+     *         )
     *     ),
      *    @OA\Response(
      *          response="200",
