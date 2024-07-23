@@ -48,17 +48,23 @@ class DirectoryService
     }
 
     public function executePut($id, $params){
-        $path = $this->getPath($params['file']);
-        $params['path'] = $path;
-        $params['file_name'] = $params['file']->getClientOriginalName();
-        
-        $directory = Directory::where('id',$id)->first();
+        $path = $this->getPath($params['file'],$params['file']->getClientOriginalName());
 
-        if(!is_null($directory)){
-            $directory->update($params);
-            $directory->save();
-            
-        }
-        return $directory;        
+        // $params['path'] = $path;
+        // $params['file_name'] = $params['file']->getClientOriginalName();
+        
+        // $directory = Directory::where('id',$id)->first();
+
+        // if(!is_null($directory)){
+        //     $directory->update($params);
+        // }
+        // return $directory;     
+        Directory::where('id',$id)->update([
+            'file_id' => $params['file_id'],
+            'path' => $path,
+            'file_name' => $params['file']->getClientOriginalName(),
+            'description' => $params['description'],
+            'name' => $params['name']
+        ]);   
     }
 }
