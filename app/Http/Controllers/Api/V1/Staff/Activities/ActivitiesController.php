@@ -14,8 +14,8 @@ use App\Http\Resources\Staff\Activities\ActivitiesCollection;
 
 class ActivitiesController extends Controller
 {
-    public function index(ActivitiesService $service){
-        $result = $service->execute();
+    public function index(ActivitiesService $service, Request $request){
+        $result = $service->execute($request->lib_activity_id);
 
         return new ActivitiesCollection($result);
     }

@@ -12,6 +12,11 @@ class GetActivities extends Controller
      *      tags={"Activities"},
      *      summary="Activities",
      *      description=" Activities",
+     *      *   @OA\Parameter(
+     *          name="lib_activity_id",
+     *          in="query",
+     *          description="ID of Lib Activity",
+     *      ),
      *    @OA\Response(
      *          response="200",
      *          description="OK",

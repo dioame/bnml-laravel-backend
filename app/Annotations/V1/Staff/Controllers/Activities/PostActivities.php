@@ -26,6 +26,27 @@ class PostActivities extends Controller
      *              type="number",
      *              example=1
      *          ),
+     *      *          @OA\Property(
+     *              property="name",
+     *              description="name",
+     *              title="name",
+     *              type="text",
+     *              example="name"
+     *          ),
+     *      *          @OA\Property(
+     *              property="description",
+     *              description="description",
+     *              title="description",
+     *              type="text",
+     *              example="description"
+     *          ),
+     *      *          @OA\Property(
+     *              property="area",
+     *              description="area",
+     *              title="area",
+     *              type="text",
+     *              example="area"
+     *          ),
      *          @OA\Property(
      *              property="start_date",
      *              description="start_date",

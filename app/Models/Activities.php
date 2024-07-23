@@ -21,7 +21,10 @@ class Activities extends Model
     protected $fillable = [
         'lib_activity_id',
         'start_date',
-        'end_date'
+        'end_date',
+        'name',
+        'description',
+        'area'
     ];
 
  

@@ -246,6 +246,13 @@
                 ],
                 "summary": "Activities",
                 "description": " Activities",
+                "parameters": [
+                    {
+                        "name": "lib_activity_id",
+                        "in": "query",
+                        "description": "ID of Lib Activity"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -326,6 +333,24 @@
                                         "description": "lib_activity_id",
                                         "type": "number",
                                         "example": 1
+                                    },
+                                    "name": {
+                                        "title": "name",
+                                        "description": "name",
+                                        "type": "text",
+                                        "example": "name"
+                                    },
+                                    "description": {
+                                        "title": "description",
+                                        "description": "description",
+                                        "type": "text",
+                                        "example": "description"
+                                    },
+                                    "area": {
+                                        "title": "area",
+                                        "description": "area",
+                                        "type": "text",
+                                        "example": "area"
                                     },
                                     "start_date": {
                                         "title": "start_date",

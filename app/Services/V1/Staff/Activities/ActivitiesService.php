@@ -17,8 +17,13 @@ class ActivitiesService
      * @throws CredentialsInvalidException
      */
 
-    public function execute(){
-        return Activities::orderBy('created_at', 'desc')->get(); 
+    public function execute($lib_activity_id){
+        if ($lib_activity_id) {
+            return Activities::where('lib_activity_id', $lib_activity_id)->orderBy('created_at', 'desc')->get();
+        } else {
+            return Activities::orderBy('created_at', 'desc')->get();
+        }
+
     }
 
     public function executeId($id){
@@ -30,6 +35,9 @@ class ActivitiesService
 
         Activities::create([
             'lib_activity_id' => $params['lib_activity_id'],
+            'name' => $params['name'],
+            'description' => $params['description'],
+            'area' => $params['area'],
             'start_date' => $params['start_date'],
             'end_date' => $params['end_date']
         ]);
