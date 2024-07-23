@@ -17,8 +17,8 @@ class DirectoryService
      * @throws CredentialsInvalidException
      */
 
-    public function execute(){
-        return Directory::orderBy('created_at', 'desc')->get(); 
+    public function execute($lib_directory_id){
+        return Directory::where('file_id',$lib_directory_id)->orderBy('created_at', 'desc')->get(); 
     }
 
     public function executeId($id){

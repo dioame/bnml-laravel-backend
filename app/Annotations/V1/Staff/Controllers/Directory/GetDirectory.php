@@ -12,6 +12,16 @@ class GetDirectory extends Controller
      *      tags={"Directory"},
      *      summary="Directory",
      *      description=" Directory",
+     *     @OA\Parameter(
+     *          name="lib_directory_id",
+     *          in="query",
+     *          description="ID of Lib Directory",
+     *          required=true,
+     *          @OA\Schema(
+     *              type="integer",
+     *              format="int64"
+     *          )
+     *      ),
      *    @OA\Response(
      *          response="200",
      *          description="OK",

@@ -14,8 +14,8 @@ use App\Http\Resources\Staff\Directory\DirectoryCollection;
 
 class DirectoryController extends Controller
 {
-    public function index(DirectoryService $service){
-        $result = $service->execute();
+    public function index(DirectoryService $service, Request $request){
+        $result = $service->execute($request->lib_directory_id);
 
         return new DirectoryCollection($result);
     }

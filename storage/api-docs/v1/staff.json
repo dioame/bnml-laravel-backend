@@ -1049,6 +1049,18 @@
                 ],
                 "summary": "Directory",
                 "description": " Directory",
+                "parameters": [
+                    {
+                        "name": "lib_directory_id",
+                        "in": "query",
+                        "description": "ID of Lib Directory",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
