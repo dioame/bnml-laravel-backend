@@ -89,4 +89,17 @@ class UserController extends Controller
         $result = $service->execute($request->term);
         return new UserResourceTermCollection($result);
     }
+
+    public function getMembers(UserService $service){
+        $result = $service->execute('member');
+        return new UserCollection($result);
+    }
+    public function getOfficers(UserService $service){
+        $result = $service->execute('officer');
+        return new UserCollection($result);
+    }
+    public function getPetitioners(UserService $service){
+        $result = $service->execute('petitioner');
+        return new UserCollection($result);
+    }
 }

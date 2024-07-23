@@ -60,12 +60,15 @@ Route::prefix('staff')->group(function () {
         
         // Users
 
+        Route::get('user/members', [UserController::class, 'getMembers']);
+        Route::get('user/officers', [UserController::class, 'getOfficers']);
+        Route::get('user/petitioners', [UserController::class, 'getPetitioners']);
         Route::get('user/search', [UserController::class, 'getUserByTerm']);
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::put('user', [UserController::class, 'update']);
         Route::delete('user', [UserController::class, 'destroy']);
         Route::apiResource('user', UserController::class);
-        
+
         // Meetings
         Route::get('meeting/stated-meeting/points', [MeetingsController::class, 'getStatedMeeting']);
         Route::get('meeting/special-meeting/points', [MeetingsController::class, 'getSpecialMeeting']);
