@@ -18,7 +18,11 @@ class DirectoryService
      */
 
     public function execute($lib_directory_id){
-        return Directory::where('file_id',$lib_directory_id)->orderBy('created_at', 'desc')->get(); 
+        if ($lib_directory_id) {
+            return Directory::where('file_id', $lib_directory_id)->orderBy('created_at', 'desc')->get();
+        } else {
+            return Directory::orderBy('created_at', 'desc')->get();
+        }
     }
 
     public function executeId($id){
