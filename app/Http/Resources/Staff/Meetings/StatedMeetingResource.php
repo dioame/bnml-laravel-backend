@@ -17,6 +17,7 @@ class StatedMeetingResource extends JsonResource
         
         return [
             'user_id' => $this->user_id,
+            'name' => $this->user->firstname .' '.(($this->user->middlename) ? $this->user->middlename[0] : '').' '.$this->user->lastname,
             'activities' => $this->activities,
             'points' => $this->points,
             'rank' => $this->rank

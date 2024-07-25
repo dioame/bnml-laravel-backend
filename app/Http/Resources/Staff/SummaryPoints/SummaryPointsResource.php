@@ -17,6 +17,7 @@ class SummaryPointsResource extends JsonResource
         
         return [
             'id' => $this->id,
+            'name' => $this->firstname .' '.(($this->middlename) ? $this->middlename[0] : '').' '.$this->lastname,
             'stated_meeting_points' => $this->statedMeetingPoints,
             'special_meeting_points' => $this->specialMeetingPoints,
             'flag+tribute_points' => $this->flagTributePoints,
