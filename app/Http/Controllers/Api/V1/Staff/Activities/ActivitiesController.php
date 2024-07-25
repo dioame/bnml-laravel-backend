@@ -70,5 +70,10 @@ class ActivitiesController extends Controller
         return new ActivitiesCollection($result);
     }
 
+    public function getActivityByTerm(Request $request, ActivitiesService $service){
+        $result = $service->executeTerm($request->term);
+        return new ActivitiesCollection($result);
+    }
+
    
 }

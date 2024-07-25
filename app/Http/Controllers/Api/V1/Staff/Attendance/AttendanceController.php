@@ -70,5 +70,11 @@ class AttendanceController extends Controller
         return new AttendanceCollection($result);
     }
 
+    public function getAttendanceByActivity($id, AttendanceService $service){
+        $result = $service->executeActivityId($id);
+
+        return new AttendanceCollection($result);
+    }
+
    
 }

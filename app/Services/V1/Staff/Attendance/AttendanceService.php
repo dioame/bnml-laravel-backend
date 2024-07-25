@@ -23,6 +23,10 @@ class AttendanceService
         return Attendance::where('id', $id)->get();
     }
 
+    public function executeActivityId($id){
+        return Attendance::where('activities_id', $id)->get();
+    }
+
     public function executePost($params)
     {
         $user = Auth::User();
