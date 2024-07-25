@@ -28,6 +28,10 @@ class Attendance extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function activities()
+    {
+        return $this->belongsTo(Activity::class, 'activity_id', 'id');
+    }
  
   
 }

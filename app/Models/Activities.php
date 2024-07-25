@@ -27,6 +27,10 @@ class Activities extends Model
         'area'
     ];
 
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'activities_id', 'id');
+    }
  
   
 }

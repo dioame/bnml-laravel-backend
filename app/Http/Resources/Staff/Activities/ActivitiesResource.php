@@ -23,6 +23,7 @@ class ActivitiesResource extends JsonResource
             'area' => $this->area,
             'start_date' => date("F d, Y g:i a",strtotime($this->start_date)),
             'end_date' => date("F d, Y g:i a",strtotime($this->end_date)),
+            'count' => $this->attendance->count()
             // 'created_at' => $this->created_at->toDateTimeString(),
             // 'updated_at' => $this->updated_at->toDateTimeString()
         ];
