@@ -15,7 +15,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    'google_nextjs_laravel_token' => env('GOOGLE_NEXTJS_LARAVEL_TOKEN','123'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
