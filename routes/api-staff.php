@@ -76,6 +76,7 @@ Route::prefix('staff')->group(function () {
         Route::get('meeting/special-meeting/points', [MeetingsController::class, 'getSpecialMeeting']);
         
         //FlagTribute
+        Route::get('/flag-tribute/points', [FlagTributeController::class, 'pointsRank'] );
         Route::apiResource('flag-tribute', FlagTributeController::class );
         
         //Overall Summary Points
