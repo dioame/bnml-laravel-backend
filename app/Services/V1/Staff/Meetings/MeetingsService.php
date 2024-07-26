@@ -75,11 +75,18 @@ class MeetingsService
                     $monthKey = strtolower(substr($activity->month, 0, 3));
                     return [$monthKey => $activity];
                 });
+            
     
             // Ensure all months are present
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
             $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
-                return [$month => $activities->get($month, new \stdClass())];
+                // var_dump($activities->get($month, new \stdClass()));
+                $result = $activities->get($month, new \stdClass());
+                if (is_object($result) && get_class($result) === 'stdClass' && count(get_object_vars($result)) === 0) {
+                    $result = null;
+                }
+
+                return [$month => $result ];
             });
     
             $statedMeetingData->activities = $activities;
@@ -117,7 +124,12 @@ class MeetingsService
                 // Ensure all months are present
                 $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
                 $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
-                    return [$month => $activities->get($month, new \stdClass())];
+                    $result = $activities->get($month, new \stdClass());
+                    if (is_object($result) && get_class($result) === 'stdClass' && count(get_object_vars($result)) === 0) {
+                        $result = null;
+                    }
+    
+                    return [$month => $result ];
                 });
         
                 $statedMeetingData->activities = $activities;

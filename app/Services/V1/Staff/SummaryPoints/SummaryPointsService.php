@@ -140,7 +140,7 @@ class SummaryPointsService
             ->where('attendance.user_id', $id)
             ->first();
 
-            return $points->points;
+            return $points ? $points->points : 0;
         }
 
         return 0;
@@ -157,11 +157,7 @@ class SummaryPointsService
             ->where('attendance.user_id', $id)
             ->first();
 
-            if($points){
-                return $points->points;
-            }else{
-                return 0;
-            }
+            return $points ? $points->points : 0;
         }
 
         return 0;
