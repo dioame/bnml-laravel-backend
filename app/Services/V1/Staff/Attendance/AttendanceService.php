@@ -31,10 +31,15 @@ class AttendanceService
     {
         $user = Auth::User();
 
-        Attendance::create([
-            'user_id' => $params['user_id'],
-            'activities_id' => $params['activity_id'],
-        ]);
+        $exist = Attendance::where('user_id', $params['user_id'])->where('activities_id', $params['activity_id'])->exists();
+
+        if(!$exist){
+            Attendance::create([
+                'user_id' => $params['user_id'],
+                'activities_id' => $params['activity_id'],
+            ]);
+        }
+       
     }
 
     public function executePut($id, $params){

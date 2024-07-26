@@ -58,6 +58,7 @@ class InstallationService
                     return [
                         'id' => $installation->id,
                         'user_id' => $installation->user_id,
+                        'name' =>  $installation->libInstallation->name,
                         'installation_id' => $installation->installation_id,
                         'created_at' => $installation->created_at,
                         'updated_at' => $installation->updated_at,
@@ -79,8 +80,6 @@ class InstallationService
                 'rank' => $index + 1,
             ];
         });
-
-
         return $rankedUsersPoints;
     }
 

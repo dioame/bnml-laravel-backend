@@ -65,14 +65,25 @@ class MeetingsService
             ->groupBy('attendance.user_id')
             ->get();
 
-        foreach($statedMeetingDatas as $statedMeetingData) {
-            $statedMeetingData->activities = Activities::join('attendance', 'attendance.activities_id', '=', 'activities.id')
+        foreach ($statedMeetingDatas as $statedMeetingData) {
+            $activities = Activities::join('attendance', 'attendance.activities_id', '=', 'activities.id')
                 ->where('attendance.user_id', $statedMeetingData->user_id)
                 ->where('activities.lib_activity_id', '=', 1)
                 ->select('activities.*', DB::raw('MONTHNAME(activities.start_date) as month'))
-                ->get()->toArray();
+                ->get()
+                ->mapWithKeys(function ($activity) {
+                    $monthKey = strtolower(substr($activity->month, 0, 3));
+                    return [$monthKey => $activity];
+                });
+    
+            // Ensure all months are present
+            $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+            $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
+                return [$month => $activities->get($month, new \stdClass())];
+            });
+    
+            $statedMeetingData->activities = $activities;
         }
-
         // Sort the collection by points in descending order
         $sortedData = $statedMeetingDatas->sortByDesc('points')->values();
 
@@ -92,13 +103,25 @@ class MeetingsService
             ->groupBy('attendance.user_id')
             ->get();
 
-        foreach($statedMeetingDatas as $statedMeetingData) {
-            $statedMeetingData->activities = Activities::join('attendance', 'attendance.activities_id', '=', 'activities.id')
-                ->where('attendance.user_id', $statedMeetingData->user_id)
-                ->where('activities.lib_activity_id', '=', 2)
-                ->select('activities.*', DB::raw('MONTHNAME(activities.start_date) as month'))
-                ->get()->toArray();
-        }
+            foreach ($statedMeetingDatas as $statedMeetingData) {
+                $activities = Activities::join('attendance', 'attendance.activities_id', '=', 'activities.id')
+                    ->where('attendance.user_id', $statedMeetingData->user_id)
+                    ->where('activities.lib_activity_id', '=', 2)
+                    ->select('activities.*', DB::raw('MONTHNAME(activities.start_date) as month'))
+                    ->get()
+                    ->mapWithKeys(function ($activity) {
+                        $monthKey = strtolower(substr($activity->month, 0, 3));
+                        return [$monthKey => $activity];
+                    });
+        
+                // Ensure all months are present
+                $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+                $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
+                    return [$month => $activities->get($month, new \stdClass())];
+                });
+        
+                $statedMeetingData->activities = $activities;
+            }
 
         // Sort the collection by points in descending order
         $sortedData = $statedMeetingDatas->sortByDesc('points')->values();
