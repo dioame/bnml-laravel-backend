@@ -14,8 +14,11 @@ class InstallationPointsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         return [
+            'id' => $this['user_id'],
             'user_id' => $this['user_id'],
+            'name' => $this['user_name'],
             'installation' => $this->resource['installation'],
             'points' => $this->resource['points'],
             'rank' => $this->resource['rank'],

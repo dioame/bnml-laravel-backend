@@ -47,13 +47,17 @@ class InstallationService
 
     public function executePoints()
     {
-        $installations = Installation::all();
+        $installations = Installation::with('user')->get();
 
         $groupedInstallations = $installations->groupBy('user_id');
 
         $responseData = $groupedInstallations->map(function ($installations, $userId) {
+            $user_name = $installations->first()->user->firstname.' '.$installations->first()->user->middlename.' '.$installations->first()->user->lastname;
+
             return [
+                'id' => $userId,
                 'user_id' => $userId,
+                'user_name' => $user_name,
                 'installation' => $installations->map(function ($installation) {
                     return [
                         'id' => $installation->id,
@@ -74,7 +78,9 @@ class InstallationService
         // Assign ranks
         $rankedUsersPoints = $sortedUsers->map(function ($user, $index) {
             return [
+                'id' => $user['user_id'],
                 'user_id' => $user['user_id'],
+                'user_name' => $user['user_name'],
                 'installation' => $user['installation'],
                 'points' => $user['points'],
                 'rank' => $index + 1,
