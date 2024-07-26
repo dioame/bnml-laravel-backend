@@ -416,7 +416,7 @@
                 }
             }
         },
-        "/activity/search": {
+        "/activity/search/{lib_activity_id}": {
             "get": {
                 "tags": [
                     "Activities"
@@ -424,6 +424,11 @@
                 "summary": "Activities",
                 "description": "Activities",
                 "parameters": [
+                    {
+                        "name": "lib_activity_id",
+                        "in": "path",
+                        "description": "Lib Activity Id"
+                    },
                     {
                         "name": "term",
                         "in": "query",

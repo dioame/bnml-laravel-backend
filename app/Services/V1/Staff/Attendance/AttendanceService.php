@@ -24,7 +24,7 @@ class AttendanceService
     }
 
     public function executeActivityId($id){
-        return Attendance::where('activities_id', $id)->get();
+        return Attendance::where('activities_id', $id)->orderBy('created_at','desc')->get();
     }
 
     public function executePost($params)

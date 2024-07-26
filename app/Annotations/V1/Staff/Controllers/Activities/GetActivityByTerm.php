@@ -8,10 +8,15 @@ class GetLibDirectoryByTerm extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/activity/search",
+     *      path="/activity/search/{lib_activity_id}",
      *      tags={"Activities"},
      *      summary="Activities",
      *      description="Activities",
+     *      @OA\Parameter(
+     *          name="lib_activity_id",
+     *          in="path",
+     *          description="Lib Activity Id",
+     *      ),
      *      @OA\Parameter(
      *          name="term",
      *          in="query",

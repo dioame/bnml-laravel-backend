@@ -57,13 +57,14 @@ class ActivitiesService
         return $activities;        
     }
 
-    public function executeTerm($term)
+    public function executeTerm($lib_activity_id,$term)
     {
         if(!$term){
             return Activities::all();
         }else{
             return Activities::
             whereRaw("CONCAT(name, '-',description) LIKE ?", ["%{$term}%"])
+            ->where('lib_activity_id',$lib_activity_id)
             ->get();
         }
          

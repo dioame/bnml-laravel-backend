@@ -47,7 +47,7 @@ Route::prefix('staff')->group(function () {
         Route::apiResource('directory', DirectoryController::class );
         
         //Activities
-        Route::get('activity/search', [ActivitiesController::class, 'getActivityByTerm']);
+        Route::get('activity/search/{lib_activity_id}', [ActivitiesController::class, 'getActivityByTerm']);
         Route::apiResource('activities', ActivitiesController::class );
         
         //Attendance
