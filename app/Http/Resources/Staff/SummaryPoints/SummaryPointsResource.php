@@ -20,7 +20,7 @@ class SummaryPointsResource extends JsonResource
             'name' => $this->firstname .' '.(($this->middlename) ? $this->middlename[0] : '').' '.$this->lastname,
             'stated_meeting_points' => $this->statedMeetingPoints,
             'special_meeting_points' => $this->specialMeetingPoints,
-            'flag+tribute_points' => $this->flagTributePoints,
+            'flag_tribute_points' => $this->flagTributePoints,
             'installation_points' => $this->installationPoints,
             'total_points' => $this->totalPoints,
         ];
