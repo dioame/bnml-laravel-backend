@@ -43,17 +43,17 @@ class FlagTributeService
     public function executePost($params)
     {
 
-        $user_exist = FlagTribute::where('user_id', $params['user_id'])->first();
+        // $user_exist = FlagTribute::where('user_id', $params['user_id'])->first();
 
-        if($user_exist){
-            $user_exist->points += $params['points'];
-            $user_exist->save();
-        }else{
+        // if($user_exist){
+        //     $user_exist->points += $params['points'];
+        //     $user_exist->save();
+        // }else{
             FlagTribute::create([
                 'user_id' => $params['user_id'],
                 'points' => $params['points'],
             ]);
-        }
+        // }
     }
 
     public function executePut($id, $params){
@@ -63,6 +63,21 @@ class FlagTributeService
 
         return $FlagTribute;
         
+    }
+
+    public function getRank(){
+        $flagTributes = FlagTribute::selectRaw('flag_tribute.user_id, users.firstname, users.middlename, users.lastname, users.extensionname, SUM(flag_tribute.points) as points')
+                           ->join('users', 'flag_tribute.user_id', '=', 'users.id')
+                           ->groupBy('flag_tribute.user_id', 'users.firstname')
+                           ->orderBy('points', 'desc')
+                           ->get();
+
+        $rank = 1;
+        foreach ($flagTributes as $tribute) {
+            $tribute->rank = $rank++;
+        }
+
+        return $flagTributes;
     }
 
 }

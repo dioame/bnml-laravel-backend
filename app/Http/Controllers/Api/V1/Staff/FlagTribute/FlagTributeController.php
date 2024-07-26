@@ -11,6 +11,7 @@ use App\Http\Requests\Staff\FlagTribute\FlagTributeRequest;
 use App\Http\Requests\Staff\FlagTribute\PutFlagTributeRequest;
 use App\Services\V1\Staff\FlagTribute\FlagTributeService;
 use App\Http\Resources\Staff\FlagTribute\FlagTributeCollection;
+use App\Http\Resources\Staff\FlagTribute\FlagTributeCollectionPoints;
 
 class FlagTributeController extends Controller
 {
@@ -60,6 +61,12 @@ class FlagTributeController extends Controller
         $result = $service->executeId($id);
 
         return new FlagTributeCollection($result);
+    }
+
+    public function pointsRank(FlagTributeService $service){
+        $result = $service->getRank();
+
+        return new FlagTributeCollectionPoints($result);
     }
 
    
