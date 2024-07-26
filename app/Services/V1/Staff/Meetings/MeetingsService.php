@@ -81,7 +81,7 @@ class MeetingsService
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
             $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
                 // var_dump($activities->get($month, new \stdClass()));
-                $result = $activities->get($month, new \stdClass());
+                $result = $activities->get($month, null);
                 if (is_object($result) && get_class($result) === 'stdClass' && count(get_object_vars($result)) === 0) {
                     $result = null;
                 }
@@ -124,7 +124,7 @@ class MeetingsService
                 // Ensure all months are present
                 $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
                 $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
-                    $result = $activities->get($month, new \stdClass());
+                    $result = $activities->get($month, null);
                     if (is_object($result) && get_class($result) === 'stdClass' && count(get_object_vars($result)) === 0) {
                         $result = null;
                     }
