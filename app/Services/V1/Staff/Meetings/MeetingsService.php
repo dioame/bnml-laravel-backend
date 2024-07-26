@@ -79,7 +79,7 @@ class MeetingsService
             // Ensure all months are present
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
             $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
-                return [$month => $activities->get($month, new \stdClass())];
+                return [$month => $activities->get($month, null)];
             });
     
             $statedMeetingData->activities = $activities;
@@ -117,7 +117,7 @@ class MeetingsService
                 // Ensure all months are present
                 $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
                 $activities = collect($months)->mapWithKeys(function ($month) use ($activities) {
-                    return [$month => $activities->get($month, new \stdClass())];
+                    return [$month => $activities->get($month, null)];
                 });
         
                 $statedMeetingData->activities = $activities;

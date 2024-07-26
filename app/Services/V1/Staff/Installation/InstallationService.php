@@ -68,6 +68,8 @@ class InstallationService
             ];
         })->values();
 
+        
+
         // Sort users by points in descending order
         $sortedUsers = $responseData->sortByDesc('points')->values();
 
