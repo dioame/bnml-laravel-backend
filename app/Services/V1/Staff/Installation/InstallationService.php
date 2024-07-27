@@ -46,48 +46,57 @@ class InstallationService
     }
 
     public function executePoints()
-    {
-        $installations = Installation::with('user')->get();
+{
+    $installations = Installation::with('user')->get();
 
-        $groupedInstallations = $installations->groupBy('user_id');
+    $groupedInstallations = $installations->groupBy('user_id');
 
-        $responseData = $groupedInstallations->map(function ($installations, $userId) {
-            $user_name = $installations->first()->user->firstname.' '.$installations->first()->user->middlename.' '.$installations->first()->user->lastname;
+    $responseData = $groupedInstallations->map(function ($installations, $userId) {
+        $user = User::where('id', $userId)->first();
 
-            return [
-                'id' => $userId,
-                'user_id' => $userId,
-                'user_name' => $user_name,
-                'installation' => $installations->map(function ($installation) {
-                    return [
-                        'id' => $installation->id,
-                        'user_id' => $installation->user_id,
-                        'name' =>  $installation->libInstallation->name,
-                        'installation_id' => $installation->installation_id,
-                        'created_at' => $installation->created_at,
-                        'updated_at' => $installation->updated_at,
-                    ];
-                }),
-                'points' => $installations->count() * 2,
-            ];
-        })->values();
+        // Handle the case when the user is not found
+        if (!$user) {
+            $user_name = ' ';
+        } else {
+            $user_name = $user->firstname.' '.$user->middlename.' '.$user->lastname;
+        }
 
-        // Sort users by points in descending order
-        $sortedUsers = $responseData->sortByDesc('points')->values();
+        return [
+            'id' => $userId,
+            'user_id' => $userId,
+            'user_name' => $user_name,
+            'installation' => $installations->map(function ($installation) {
+                return [
+                    'id' => $installation->id,
+                    'user_id' => $installation->user_id,
+                    'name' => $installation->libInstallation->name,
+                    'installation_id' => $installation->installation_id,
+                    'created_at' => $installation->created_at,
+                    'updated_at' => $installation->updated_at,
+                ];
+            }),
+            'points' => $installations->count() * 2,
+        ];
+    })->values();
 
-        // Assign ranks
-        $rankedUsersPoints = $sortedUsers->map(function ($user, $index) {
-            return [
-                'id' => $user['user_id'],
-                'user_id' => $user['user_id'],
-                'user_name' => $user['user_name'],
-                'installation' => $user['installation'],
-                'points' => $user['points'],
-                'rank' => $index + 1,
-            ];
-        });
-        return $rankedUsersPoints;
-    }
+    // Sort users by points in descending order
+    $sortedUsers = $responseData->sortByDesc('points')->values();
+
+    // Assign ranks
+    $rankedUsersPoints = $sortedUsers->map(function ($user, $index) {
+        return [
+            'id' => $user['user_id'],
+            'user_id' => $user['user_id'],
+            'user_name' => $user['user_name'],
+            'installation' => $user['installation'],
+            'points' => $user['points'],
+            'rank' => $index + 1,
+        ];
+    });
+
+    return $rankedUsersPoints;
+}
+    
 
 
 }
