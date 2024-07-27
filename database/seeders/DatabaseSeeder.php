@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LibActivitiesSeeder::class);
         $this->call(LibDirectorySeeder::class);
         $this->call(LibInstallationSeeder::class);
+        $this->call(ActivitySeeder::class);
     }
 }
