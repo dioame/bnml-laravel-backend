@@ -18,46 +18,6 @@ class MeetingsService
      * @throws CredentialsInvalidException
      */
 
-
-    public function executePoints()
-    {
-        $installations = Installation::all();
-
-        $groupedInstallations = $installations->groupBy('user_id');
-
-        $responseData = $groupedInstallations->map(function ($installations, $userId) {
-            return [
-                'user_id' => $userId,
-                'installation' => $installations->map(function ($installation) {
-                    return [
-                        'id' => $installation->id,
-                        'user_id' => $installation->user_id,
-                        'installation_id' => $installation->installation_id,
-                        'created_at' => $installation->created_at,
-                        'updated_at' => $installation->updated_at,
-                    ];
-                }),
-                'points' => $installations->count() * 2,
-            ];
-        })->values();
-
-        // Sort users by points in descending order
-        $sortedUsers = $responseData->sortByDesc('points')->values();
-
-        // Assign ranks
-        $rankedUsersPoints = $sortedUsers->map(function ($user, $index) {
-            return [
-                'user_id' => $user['user_id'],
-                'installation' => $user['installation'],
-                'points' => $user['points'],
-                'rank' => $index + 1,
-            ];
-        });
-
-
-        return $rankedUsersPoints;
-    }
-
     public function executedStatedMeetingPoints(){
         $statedMeetingDatas = Attendance::join('activities', 'activities.id', '=', 'attendance.activities_id')
             ->select('attendance.user_id', DB::raw('count(*) * 5 as points'))
@@ -104,15 +64,15 @@ class MeetingsService
     }
 
     public function executedSpecialMeetingPoints(){
-        $statedMeetingDatas = Attendance::join('activities', 'activities.id', '=', 'attendance.activities_id')
+        $specialMeetingDatas = Attendance::join('activities', 'activities.id', '=', 'attendance.activities_id')
             ->select('attendance.user_id', DB::raw('count(*) * 3 as points'))
             ->where('activities.lib_activity_id', '=', 2)
             ->groupBy('attendance.user_id')
             ->get();
 
-            foreach ($statedMeetingDatas as $statedMeetingData) {
+            foreach ($specialMeetingDatas as $specialMeetingData) {
                 $activities = Activities::join('attendance', 'attendance.activities_id', '=', 'activities.id')
-                    ->where('attendance.user_id', $statedMeetingData->user_id)
+                    ->where('attendance.user_id', $specialMeetingData->user_id)
                     ->where('activities.lib_activity_id', '=', 2)
                     ->select('activities.*', DB::raw('MONTHNAME(activities.start_date) as month'))
                     ->get()
@@ -132,11 +92,11 @@ class MeetingsService
                     return [$month => $result ];
                 });
         
-                $statedMeetingData->activities = $activities;
+                $specialMeetingData->activities = $activities;
             }
 
         // Sort the collection by points in descending order
-        $sortedData = $statedMeetingDatas->sortByDesc('points')->values();
+        $sortedData = $specialMeetingDatas->sortByDesc('points')->values();
 
         // Add rank to each user
         $rankedData = $sortedData->map(function ($item, $key) {
