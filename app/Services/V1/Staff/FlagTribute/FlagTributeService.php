@@ -65,12 +65,12 @@ class FlagTributeService
         
     }
 
-    public function getRank(){
-        $flagTributes = FlagTribute::selectRaw('flag_tribute.user_id, users.*, SUM(flag_tribute.points) as points')
-                           ->join('users', 'flag_tribute.user_id', '=', 'users.id')
-                           ->groupBy('flag_tribute.user_id', 'users.firstname')
-                           ->orderBy('points', 'desc')
-                           ->get();
+    public function getRank(){  
+        $flagTributes = FlagTribute::selectRaw('flag_tribute.user_id, users.id, users.firstname, users.middlename, users.lastname, users.email, SUM(flag_tribute.points) as points')
+                        ->join('users', 'flag_tribute.user_id', '=', 'users.id')
+                        ->groupBy('flag_tribute.user_id', 'users.id', 'users.firstname', 'users.middlename', 'users.lastname', 'users.email')
+                        ->orderBy('points', 'desc')
+                        ->get();
 
         $rank = 1;
         foreach ($flagTributes as $tribute) {
