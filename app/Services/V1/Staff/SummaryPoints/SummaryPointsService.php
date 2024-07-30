@@ -115,18 +115,23 @@ class SummaryPointsService
     }
 
     public function execute(){
-        $users = User::all();
+
         
-        foreach($users as $user){
+        $users = User::all()->map(function ($user) {
             $user->statedMeetingPoints = $this->statedMeetingPoints($user->id);
             $user->specialMeetingPoints = $this->specialMeetingPoints($user->id);
             $user->flagTributePoints = $this->flagTributePoints($user->id);
             $user->installationPoints = $this->installationPoints($user->id);
-            $user->totalPoints = $user->statedMeetingPoints + $user->specialMeetingPoints +  $user->flagTributePoints + $user->installationPoints;
+            $user->totalPoints = $user->statedMeetingPoints + $user->specialMeetingPoints + $user->flagTributePoints + $user->installationPoints;
+    
+            return $user;
+        })->filter(function ($user) {
+            return $user->totalPoints != 0;
+        });
 
-        }
-
-        return $users;
+        $users = $users->sortByDesc('totalPoints');
+    
+        return $users->values(); // Reset the keys
     }
 
     public function statedMeetingPoints($id){
