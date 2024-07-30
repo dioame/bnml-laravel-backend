@@ -18,7 +18,7 @@ class FlagTributeResourcePoints extends JsonResource
         return [
             'id' => $this->user_id,
             'user_id' => $this->user_id,
-            'name' => $this->user->firstname.' '.$this->user->middlename.' '.$this->user->lastname,
+            'name' => $this->user->firstname.' '. ($this->user->middlename ? $this->user->middlename : "") .' '.$this->user->lastname,
             'points' => $this->points,
             'rank' => $this->rank
         ];
