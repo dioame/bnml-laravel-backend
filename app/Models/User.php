@@ -38,7 +38,11 @@ class User extends Authenticatable
         'address',
         'gender',
         'role',
-
+        'avatar',
+        'lib_officer_id',
+        'member_type_id',
+        'date_balloted',
+        'date_of_conferral',
     ];
 
     /**
@@ -96,5 +100,10 @@ class User extends Authenticatable
     public function installations()
     {
         return $this->hasMany(Installation::class);
+    }
+
+    public function lib_officer()
+    {
+        return $this->belongsTo(Lib_officers::class);
     }
 }

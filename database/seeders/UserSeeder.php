@@ -47,6 +47,7 @@ class UserSeeder extends Seeder
                 // "shipping_address_zip" => $faker->postcode,
                 // "id_type" => $faker->randomElement(['passport', 'driver_license', 'national_id']),
                 // "id_number" => $faker->unique()->randomNumber(8),
+                "member_type_id" => 5,
             ]);
             $user->assignRole('staff-admin');
         }
