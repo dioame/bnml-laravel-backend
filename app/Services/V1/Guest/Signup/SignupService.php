@@ -27,6 +27,7 @@ class SignupService {
             "gender" => $params['gender'],
             "mobile" => $params['mobile'],
             "role" => $params['role'],
+            "member_type_id" => 5,
          
         ]);
 
