@@ -14,13 +14,19 @@ class UserService
     public function execute($role = null)
     {
         if($role == 'member'){
-            $result = User::where('role', $role)->orderBy('created_at', 'desc')->get();
+            $result = User::where('member_type_id', 1)->whereNull('lib_officer_id')->orderBy('created_at', 'desc')->get();
             return $result;
         }else if($role == 'officer'){
-            $result = User::where('role', $role)->orderBy('created_at', 'desc')->get();
+            $result = User::with('lib_officer')
+                        ->where('member_type_id', 1)
+                        ->whereNotNull('lib_officer_id') 
+                        ->join('lib_officers', 'users.lib_officer_id', '=', 'lib_officers.id')
+                        ->orderBy('lib_officers.rank', 'asc')
+                        ->select('users.*') 
+                        ->get();
             return $result;
         }else if($role == 'petitioner'){
-            $result = User::where('role', $role)->orderBy('created_at', 'desc')->get();
+            $result = User::where('member_type_id', 5)->orderBy('created_at', 'desc')->get();
             return $result;
         }
 

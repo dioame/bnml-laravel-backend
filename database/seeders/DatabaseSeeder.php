@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LibDirectorySeeder::class);
         $this->call(LibInstallationSeeder::class);
         $this->call(ActivitySeeder::class);
+        $this->call(LibOfficers::class);
+        $this->call(MemberType::class);
     }
 }
