@@ -14,7 +14,6 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-   
         return [
             'id' => $this->id,
             'firstname' => $this->firstname,
@@ -30,6 +29,8 @@ class UserResource extends JsonResource
             'date_of_conferral' => $this->date_of_conferral,
             'officer_rank' => $this->lib_officer->rank ?? null,
             'member_type' => $this->member_type_id,    
+            'gender' => $this->gender,    
+            'avatar' => $this->avatar,    
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString()
         ];

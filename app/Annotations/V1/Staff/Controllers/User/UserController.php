@@ -17,15 +17,25 @@ class UserController extends Controller
      *          description="OK",
      *          @OA\JsonContent(
     example= {
-  "status": "success",
-  "description": "OK",
   "data": {
-    "first_name": "test1",
-    "middle_name": "test2",
-    "last_name": "test3",
-    "birth_date": "1990-01-01",
-    "email": "test@test.com",
-    "mobile": "09000000000"
+    "id": 1,
+    "firstname": "Tiara",
+    "middlename": "Domenico",
+    "lastname": "Feil",
+    "extensionname": null,
+    "birth_date": "1979-02-20",
+    "email": "staff1@test.com",
+    "mobile": "(253) 531-6153",
+    "address": "77865 Ellen Cove\nLake Baby, MO 75322-0370",
+    "role": null,
+    "date_balloted": null,
+    "date_of_conferral": null,
+    "officer_rank": null,
+    "member_type": 5,
+    "gender": "male",
+    "avatar": null,
+    "created_at": "2024-08-12 13:25:54",
+    "updated_at": "2024-08-12 13:25:54"
   }
 }
      *          )
@@ -77,15 +87,25 @@ class UserController extends Controller
      *          description="OK",
      *          @OA\JsonContent(
     example= {
-  "status": "success",
-  "description": "OK",
   "data": {
-    "first_name": "test1",
-    "middle_name": "test2",
-    "last_name": "test3",
-    "birth_date": "1990-01-01",
-    "email": "test@test.com",
-    "mobile": "09000000000"
+    "id": 1,
+    "firstname": "Tiara",
+    "middlename": "Domenico",
+    "lastname": "Feil",
+    "extensionname": null,
+    "birth_date": "1979-02-20",
+    "email": "staff1@test.com",
+    "mobile": "(253) 531-6153",
+    "address": "77865 Ellen Cove\nLake Baby, MO 75322-0370",
+    "role": null,
+    "date_balloted": null,
+    "date_of_conferral": null,
+    "officer_rank": null,
+    "member_type": 5,
+    "gender": "male",
+    "avatar": null,
+    "created_at": "2024-08-12 13:25:54",
+    "updated_at": "2024-08-12 13:25:54"
   }
 }
      *          )

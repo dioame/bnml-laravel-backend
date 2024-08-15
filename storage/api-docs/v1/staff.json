@@ -4010,6 +4010,148 @@
                 }
             }
         },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Staff user details by id",
+                "description": "Returns user details including first name, middle name, last name, birth date, email, and mobile number.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "id": 1,
+                                        "firstname": "Tiara",
+                                        "middlename": "Domenico",
+                                        "lastname": "Feil",
+                                        "extensionname": null,
+                                        "birth_date": "1979-02-20",
+                                        "email": "staff1@test.com",
+                                        "mobile": "(253) 531-6153",
+                                        "address": "77865 Ellen Cove\\nLake Baby, MO 75322-0370",
+                                        "role": null,
+                                        "date_balloted": null,
+                                        "date_of_conferral": null,
+                                        "officer_rank": null,
+                                        "member_type": 5,
+                                        "gender": "male",
+                                        "avatar": null,
+                                        "created_at": "2024-08-12 13:25:54",
+                                        "updated_at": "2024-08-12 13:25:54"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Delete user account",
+                "description": "Delete  user account",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of User",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "ok"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Forbidden",
+                                    "errors": [
+                                        {
+                                            "code": 3004,
+                                            "message": "Staff inactive"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user": {
             "get": {
                 "tags": [
@@ -4024,15 +4166,25 @@
                             "application/json": {
                                 "schema": {},
                                 "example": {
-                                    "status": "success",
-                                    "description": "OK",
                                     "data": {
-                                        "first_name": "test1",
-                                        "middle_name": "test2",
-                                        "last_name": "test3",
-                                        "birth_date": "1990-01-01",
-                                        "email": "test@test.com",
-                                        "mobile": "09000000000"
+                                        "id": 1,
+                                        "firstname": "Tiara",
+                                        "middlename": "Domenico",
+                                        "lastname": "Feil",
+                                        "extensionname": null,
+                                        "birth_date": "1979-02-20",
+                                        "email": "staff1@test.com",
+                                        "mobile": "(253) 531-6153",
+                                        "address": "77865 Ellen Cove\\nLake Baby, MO 75322-0370",
+                                        "role": null,
+                                        "date_balloted": null,
+                                        "date_of_conferral": null,
+                                        "officer_rank": null,
+                                        "member_type": 5,
+                                        "gender": "male",
+                                        "avatar": null,
+                                        "created_at": "2024-08-12 13:25:54",
+                                        "updated_at": "2024-08-12 13:25:54"
                                     }
                                 }
                             }
@@ -4188,6 +4340,161 @@
                     }
                 }
             },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "requestBody": {
+                    "description": "User registration information",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "firstname",
+                                    "lastname",
+                                    "birth_date",
+                                    "address",
+                                    "gender",
+                                    "role",
+                                    "email",
+                                    "mobile",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "firstname": {
+                                        "description": "The first name of the user.",
+                                        "type": "string",
+                                        "example": "test1"
+                                    },
+                                    "middlename": {
+                                        "description": "The middle name of the user.",
+                                        "type": "string",
+                                        "example": "test2"
+                                    },
+                                    "lastname": {
+                                        "description": "The last name of the user.",
+                                        "type": "string",
+                                        "example": "test3"
+                                    },
+                                    "extensionname": {
+                                        "description": "The extension name of the user.",
+                                        "type": "string",
+                                        "example": "test3"
+                                    },
+                                    "birth_date": {
+                                        "description": "The birth date of the user (YYYY-MM-DD).",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1990-01-01"
+                                    },
+                                    "address": {
+                                        "description": "The primary address of the user.",
+                                        "type": "string",
+                                        "example": "test address"
+                                    },
+                                    "gender": {
+                                        "description": "The gender of the user.",
+                                        "type": "string",
+                                        "enum": [
+                                            "Male",
+                                            "Female"
+                                        ]
+                                    },
+                                    "role": {
+                                        "description": "The role or type of the user.",
+                                        "type": "string",
+                                        "example": "labor"
+                                    },
+                                    "email": {
+                                        "description": "The email address of the user.",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "test@test.com"
+                                    },
+                                    "mobile": {
+                                        "description": "The mobile number of the user.",
+                                        "type": "string",
+                                        "example": "+639000000000"
+                                    },
+                                    "password": {
+                                        "description": "The password for the user's account.",
+                                        "type": "string",
+                                        "example": "password"
+                                    },
+                                    "lib_officer_id": {
+                                        "description": "If officer, leave it a blank if not",
+                                        "type": "number"
+                                    },
+                                    "member_type_id": {
+                                        "description": "Member tyoe",
+                                        "type": "number",
+                                        "example": "5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "token": "54|coUoP1WfflJWLCCFBSOpE3SKpUOqZ2LBkCTV2ACHEKwiS0nG2r34svO9ObnmQuY8yIKgGcEi2oaDtsF2sHZRn8HbgGNwrfh1EvMY",
+                                    "otp": "561107"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unauthorized"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entry",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "status": "error",
+                                    "description": "Unprocessable Entry",
+                                    "errors": [
+                                        {
+                                            "field": "email",
+                                            "code": 3043,
+                                            "message": "Email taken"
+                                        },
+                                        {
+                                            "field": "photo",
+                                            "code": 5001,
+                                            "message": "The photo field is required."
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "staff": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "User"
@@ -4253,7 +4560,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {},
-                                "example": []
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 9,
+                                            "firstname": "Jadon",
+                                            "middlename": "Erick",
+                                            "lastname": "Kautzer",
+                                            "extensionname": null,
+                                            "birth_date": "1980-03-09",
+                                            "email": "staff9@test.com",
+                                            "mobile": "872.910.0854",
+                                            "address": "769 Hegmann Loaf Apt. 223\\nLake Helmermouth, KY 63734-8070",
+                                            "role": null,
+                                            "date_balloted": null,
+                                            "date_of_conferral": null,
+                                            "officer_rank": null,
+                                            "member_type": 1,
+                                            "gender": "male",
+                                            "avatar": null,
+                                            "created_at": "2024-08-12 13:25:57",
+                                            "updated_at": "2024-08-12 13:25:57"
+                                        }
+                                    ]
+                                }
                             }
                         }
                     },
@@ -4303,7 +4635,32 @@
                         "content": {
                             "application/json": {
                                 "schema": {},
-                                "example": []
+                                "example": {
+                                    "status": "success",
+                                    "description": "OK",
+                                    "data": [
+                                        {
+                                            "id": 10,
+                                            "firstname": "Avis",
+                                            "middlename": "Lauryn",
+                                            "lastname": "Wiza",
+                                            "extensionname": null,
+                                            "birth_date": "1976-12-13",
+                                            "email": "staff10@test.com",
+                                            "mobile": "+1 (938) 233-9196",
+                                            "address": "35215 Donavon Corners Suite 094\\nRoobton, TN 25447-0385",
+                                            "role": null,
+                                            "date_balloted": null,
+                                            "date_of_conferral": null,
+                                            "officer_rank": 1,
+                                            "member_type": 1,
+                                            "gender": "male",
+                                            "avatar": null,
+                                            "created_at": "2024-08-12 13:25:58",
+                                            "updated_at": "2024-08-12 13:25:58"
+                                        }
+                                    ]
+                                }
                             }
                         }
                     },
@@ -4353,75 +4710,31 @@
                         "content": {
                             "application/json": {
                                 "schema": {},
-                                "example": []
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "status": "error",
-                                    "description": "Unauthorized"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
-                                "example": {
-                                    "status": "error",
-                                    "description": "Forbidden",
-                                    "errors": [
-                                        {
-                                            "code": 3004,
-                                            "message": "Staff inactive"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/user/{id}": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Staff user details by id",
-                "description": "Returns user details including first name, middle name, last name, birth date, email, and mobile number.",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the user",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {},
                                 "example": {
                                     "status": "success",
                                     "description": "OK",
-                                    "data": {
-                                        "first_name": "test1",
-                                        "middle_name": "test2",
-                                        "last_name": "test3",
-                                        "birth_date": "1990-01-01",
-                                        "email": "test@test.com",
-                                        "mobile": "09000000000"
-                                    }
+                                    "data": [
+                                        {
+                                            "id": 19,
+                                            "firstname": "postUser",
+                                            "middlename": "postUser",
+                                            "lastname": "postUser",
+                                            "extensionname": "test3",
+                                            "birth_date": "1990-01-01",
+                                            "email": "postUser5@test.com",
+                                            "mobile": "+639000000012",
+                                            "address": "test address",
+                                            "role": "labor",
+                                            "date_balloted": null,
+                                            "date_of_conferral": null,
+                                            "officer_rank": null,
+                                            "member_type": 5,
+                                            "gender": "Male",
+                                            "avatar": null,
+                                            "created_at": "2024-08-15 07:40:56",
+                                            "updated_at": "2024-08-15 07:40:56"
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -4681,6 +4994,26 @@
         }
     },
     "components": {
+        "responses": {
+            "403": {
+                "description": "Forbidden",
+                "content": {
+                    "application/json": {
+                        "schema": {},
+                        "example": {
+                            "status": "error",
+                            "description": "Forbidden",
+                            "errors": [
+                                {
+                                    "code": 3004,
+                                    "message": "Staff inactive"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "securitySchemes": {
             "staff": {
                 "type": "http",
