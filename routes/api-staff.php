@@ -69,6 +69,7 @@ Route::prefix('staff')->group(function () {
         Route::get('user/email/{email_address}', [UserController::class, 'getUserByEmail']);
         Route::put('user', [UserController::class, 'update']);
         Route::delete('user', [UserController::class, 'destroy']);
+        Route::delete('user/{id}', [UserController::class, 'destroyById']);
         Route::apiResource('user', UserController::class);
 
         // Meetings

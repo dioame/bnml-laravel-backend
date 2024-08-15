@@ -17,6 +17,7 @@ use App\Http\Resources\Staff\Users\UserResource;
 use App\Http\Resources\Staff\Users\UserResourceTerm;
 use App\Http\Resources\Staff\Users\UserResourceTermCollection;
 use App\Http\Requests\Staff\User\PutUserRequest;
+use App\Http\Requests\Staff\User\PostUserRequest;
 
 
 
@@ -26,6 +27,16 @@ class UserController extends Controller
         $result = $service->execute();
 
         return new UserCollection($result);
+    }
+
+    public function store(PostUserRequest $request,  UserService $service){
+        list($token, $user) = $service->executePost($request->all());
+
+        return response()->json([
+            'status' => __('messages.success'),
+            'description' => __('messages.200_ok'),
+            'token' => $token,
+        ], 201);
     }
 
     public function show(UserServiceBy $service, $id){
@@ -46,6 +57,16 @@ class UserController extends Controller
             'status' => __('messages.success'),
             'description' => __('messages.200_ok'),
         ], 200);
+    }
+
+    public function destroyById($id){
+        $user = User::where('id', $id)->first();
+        $user->delete();
+
+        return response()->json([
+            'status' => __('messages.success'),
+            'description' => __('messages.200_ok'),
+        ], 200); 
     }
 
     public function destroy(){
