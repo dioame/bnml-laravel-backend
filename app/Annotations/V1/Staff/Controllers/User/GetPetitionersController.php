@@ -16,7 +16,30 @@ class GetPetitionersController extends Controller
      *          response="200",
      *          description="OK",
      *          @OA\JsonContent(
-    example= {}
+    example= {
+  "status": "success",
+  "description": "OK",
+  "data": {
+    {
+      "id": 19,
+      "firstname": "postUser",
+      "middlename": "postUser",
+      "lastname": "postUser",
+      "extensionname": "test3",
+      "birth_date": "1990-01-01",
+      "email": "postUser5@test.com",
+      "mobile": "+639000000012",
+      "address": "test address",
+      "role": "labor",
+      "date_balloted": null,
+      "date_of_conferral": null,
+      "officer_rank": null,
+      "member_type": 5,
+      "gender": "Male",
+      "avatar": null,
+      "created_at": "2024-08-15 07:40:56",
+      "updated_at": "2024-08-15 07:40:56"
+}}}
      *          )
      *      ),
      *     @OA\Response(
