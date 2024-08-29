@@ -12,11 +12,15 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Laravel\Sanctum\NewAccessToken;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements Auditable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
 
+
+    use \OwenIt\Auditing\Auditable;
     /**
      * The attributes that are mass assignable.
      *

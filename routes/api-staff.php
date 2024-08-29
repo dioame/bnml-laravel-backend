@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\V1\Staff\Attendance\AttendanceController;
 use App\Http\Controllers\Api\V1\Staff\Meetings\MeetingsController;
 use App\Http\Controllers\Api\V1\Staff\FlagTribute\FlagTributeController;
 use App\Http\Controllers\Api\V1\Staff\SummaryPoints\SummaryPointsController;
+use App\Http\Controllers\Api\V1\Staff\Audits\AuditsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +84,8 @@ Route::prefix('staff')->group(function () {
         //Overall Summary Points
         Route::get('overall-summary/points', [SummaryPointsController::class, 'index']);
      
-        
+        //audits
+        Route::get('audits', [ AuditsController::class, 'index']);
     });
     
 });
