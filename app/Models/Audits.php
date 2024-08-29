@@ -3,29 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
 
-class FlagTribute extends Model implements Auditable
+class Audits extends Model 
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
-    use \OwenIt\Auditing\Auditable;
     /**
      * The attributes that are mass assignable.
-     *s
+     *
      * @var array<int, string>
      */
 
     protected $dates = ['deleted_at'];
-    protected $table = 'flag_tribute';
-    protected $fillable = [
-        'user_id',
-        'points'
-    ];
+    protected $table = 'audits';
 
- 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');
     }
